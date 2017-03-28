@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz Demos</title>
+<link rel="stylesheet" href="milligram.min.css" type="text/css" media="all">
+<link rel="stylesheet" href="style.css" type="text/css" media="all">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" type="text/css" media="all">
+<script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="jquery.waitforimages.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+<p>Demo overview:</p>
+<ul>
+<li><a href="#demo1">Den ultimate Star Wars Quizzen</a></li>
+<li><a href="#demo2">Hvor Bør Du Dra På Ferie?</a></li>
+<li><a href="#demo3">What Easy Pricing Tables License is Right for Me?</a></li>
+<li><a href="#demo4">Which WordPress Host Is Right For You?</a></li>
+<li><a href="#demo5">How Secure is Your WordPress Site?</a></li>
+</ul>
+<h3 id="demo1">Demo 1</h3>
+<p>Denne quizzen tester din kunnskap om Star Wars. <span>Den illustrerer følgende Quiz Cat premium egenskaper:</span></p>
+<ul>
+<li>Social sharing buttons</li>
+<li>Lead capture (name + email, with “skip” button)</li>
+</ul>
+			<div class="waz_qc_quiz" id="waz_qc_quiz_41099">
+				<span class="waz_qc_mobile_check"></span>
+				<h2 class="waz_qc_quiz_title">Den ultimate Star Wars Quizzen</h2>
+				<p class="waz_qc_quiz_description">Padawan or Jedi Master? Try this Quiz Cat live demo.</p>
+				<img class="waz_qc_quiz_description_img" src="starwars-title.jpg">
+				<button type="button" class="waz_qc_button waz_qc_start_button">Start Quiz</button>
+				<div class="flip-container waz_qc_quiz_div" style="display: none; height: 200px;">
+					<div class="waz-qc-flipper">
+						<div class="waz-qc-front" id="waz_qc_answer_container" style="height: 200px;"><p id="waz_qc_question">Spørsmål</p><img class="waz_qc_quiz_question_img" src=""><div class="waz_qc_answer_div waz-qc-threeup" data-question="1" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="2" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="3" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="4" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div></div>
+						<div class="waz-qc-back" id="waz_qc_back_container" style="height: 200px;"><p id="waz_qc_question_right_or_wrong"></p><img class="waz_qc_quiz_question_img" src=""><span id="waz_qc_question_back"></span><p id="waz_qc_back_response_p" class="waz_qc_back_response">Ditt svar: <span id="waz_qc_your_answer"></span></p><p id="waz_qc_correct_answer_p" class="waz_qc_back_response">Riktig svar: <span id="waz_qc_correct_answer"></span></p><button type="button" class="waz_qc_next_question">Neste</button></div>
+					</div>
+				</div>
+				<div class="waz_qc_score_container" style="display:none;"><p class="waz_qc_score_text">Du fikk {{SCORE_CORRECT}} av {{SCORE_TOTAL}} </p><h3 class="waz_qc_score_title"></h3><img class="waz_qc_score_img" src=""><p class="waz_qc_score_desc"></p></div><div class="waz_qc_social_share" style="display:none;"><h3>Del ditt resultat</h3><a class="waz_qc_share_link" id="waz_qc_share_link_facebook" data-sharestring="Jeg fikk {{MY_QUIZ_RESULT}} - Den ultimate Star Wars Quizzen" href="https://www.facebook.com/dialog/feed?app_id=860704900727407&amp;link=&amp;name=The+Ultimate+Star+Wars+Quiz&amp;caption=Padawan+or+Jedi+Master%3F+Try+this+Quiz+Cat+live+demo.&amp;description=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"></path></svg><span class="waz_qc_share_name">Del</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_twitter" data-sharestring="Jeg fikk {{MY_QUIZ_RESULT}} - Den ultimate Star Wars Quizzen" href="https://twitter.com/intent/tweet?url=&amp;text=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"></path></svg><span class="waz_qc_share_name">Tweet</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_pinterest" data-sharestring="Jeg fikk {{MY_QUIZ_RESULT}} - Den ultimate Star Wars Quizzen" href="http://pinterest.com/pin/create/button/?url=&amp;description=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M14.02 1.57c-7.06 0-12.784 5.723-12.784 12.785S6.96 27.14 14.02 27.14c7.062 0 12.786-5.725 12.786-12.785 0-7.06-5.724-12.785-12.785-12.785zm1.24 17.085c-1.16-.09-1.648-.666-2.558-1.22-.5 2.627-1.113 5.146-2.925 6.46-.56-3.972.822-6.952 1.462-10.117-1.094-1.84.13-5.545 2.437-4.632 2.837 1.123-2.458 6.842 1.1 7.557 3.71.744 5.226-6.44 2.924-8.775-3.324-3.374-9.677-.077-8.896 4.754.19 1.178 1.408 1.538.49 3.168-2.13-.472-2.764-2.15-2.683-4.388.132-3.662 3.292-6.227 6.46-6.582 4.008-.448 7.772 1.474 8.29 5.24.58 4.254-1.815 8.864-6.1 8.532v.003z"></path></svg><span class="waz_qc_share_name">Pin</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_email" data-sharestring="Jeg fikk {{MY_QUIZ_RESULT}} - Den ultimate Star Wars Quizzen" href="mailto:?body=&amp;subject=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M20.11 26.147c-2.335 1.05-4.36 1.4-7.124 1.4C6.524 27.548.84 22.916.84 15.284.84 7.343 6.602.45 15.4.45c6.854 0 11.8 4.7 11.8 11.252 0 5.684-3.193 9.265-7.398 9.3-1.83 0-3.153-.934-3.347-2.997h-.077c-1.208 1.986-2.96 2.997-5.023 2.997-2.532 0-4.36-1.868-4.36-5.062 0-4.75 3.503-9.07 9.11-9.07 1.713 0 3.7.4 4.6.972l-1.17 7.203c-.387 2.298-.115 3.3 1 3.4 1.674 0 3.774-2.102 3.774-6.58 0-5.06-3.27-8.994-9.304-8.994C9.05 2.87 3.83 7.545 3.83 14.97c0 6.5 4.2 10.2 10 10.202 1.987 0 4.09-.43 5.647-1.245l.634 2.22zM16.647 10.1c-.31-.078-.7-.155-1.207-.155-2.572 0-4.596 2.53-4.596 5.53 0 1.5.7 2.4 1.9 2.4 1.44 0 2.96-1.83 3.31-4.088l.592-3.72z"></path></svg><span class="waz_qc_share_name">Epost</span></a></div> 
+				
+				<div class="waz_qc_quiz_footer" style="display: none;">
+					<span class="waz_qc_question_count"></span>
+				</div>
+				<div class="waz_qc_optin_container" style="display:none;"><h3 class="waz_qc_email_headline">Skriv inn din epost for å se ditt resultat</h3><input type="text" title="Skriv inn ditt navn." id="waz_qc_name_input" style="display:inline-block; width:49.5%; margin-right: 1%; box-sizing:border-box;" placeholder="Ditt navn" class="waz_qc_text_input waz_qc_optin_input" name="waz_qc_name_input"><input type="email" title="Skriv din epostadresse." id="waz_qc_email_input" style="display:inline-block; width:49.5%; box-sizing:border-box;" placeholder="Din epost" class="waz_qc_text_input waz_qc_optin_input" name="waz_qc_email_input"><button type="button" class="waz_qc_button waz_qc_submit_email_button">Vis mitt resultat</button><br><button type="button" class="waz_qc_skip_email_button">Hopp over</button></div>	
+				<div class="waz_qc_your_answer_container" style="display:none;"><p class="waz_qc_your_answers_text">Ditt svar</p><div class="waz_qc_insert_response_above"></div></div> 
+			</div>
+			
+<h3 id="demo2">Demo 2</h3>
+<p>Denne personlighets quizzen hjelper deg å velge hvor du bør dra på ferie. <span>Den illustrerer følgende Quiz Cat premium egenskaper:</span></p>
+<ul>
+<li>Personality Quiz</li>
+<li>Social sharing buttons</li>
+<li>Add images to answers</li>
+</ul>
+			<div class="waz_qc_quiz" id="waz_qc_quiz_46218">
+				<span class="waz_qc_mobile_check"></span>
+				<h2 class="waz_qc_quiz_title">Hvor Bør Du Dra På Ferie?</h2>
+				<p class="waz_qc_quiz_description">Ikke sikker på hvor du bør dra på neste ferie? Forsøk denne quizen.</p>
+				<img class="waz_qc_quiz_description_img" src="suitcase.jpg">
+				<button type="button" class="waz_qc_button waz_qc_start_button">Start Quiz</button>
+				<div class="flip-container waz_qc_quiz_div" style="display: none; height: 200px;">
+					<div class="waz-qc-flipper">
+						<div class="waz-qc-front" id="waz_qc_answer_container" style="height: 200px;"><p id="waz_qc_question">Spørsmål</p><img class="waz_qc_quiz_question_img" src=""><div class="waz_qc_answer_div waz-qc-threeup" data-question="1" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="2" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="3" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="4" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div></div> 
+						<div class="waz-qc-back" id="waz_qc_back_container" style="height: 200px;"><p id="waz_qc_question_right_or_wrong"></p><img class="waz_qc_quiz_question_img" src=""><span id="waz_qc_question_back"></span><p id="waz_qc_back_response_p" class="waz_qc_back_response">Ditt svar: <span id="waz_qc_your_answer"></span></p><p id="waz_qc_correct_answer_p" class="waz_qc_back_response">Riktig svar: <span id="waz_qc_correct_answer"></span></p><button type="button" class="waz_qc_next_question">Neste</button></div>
+					</div>
+				</div>
+				<div class="waz_qc_score_container" style="display:none;"><p class="waz_qc_score_text">Du fikk {{SCORE_CORRECT}} av {{SCORE_TOTAL}} </p><h3 class="waz_qc_score_title"></h3><img class="waz_qc_score_img" src=""><p class="waz_qc_score_desc"></p></div><div class="waz_qc_social_share" style="display:none;"><h3>DEL DITT RESULTAT</h3><a class="waz_qc_share_link" id="waz_qc_share_link_facebook" data-sharestring="I got {{MY_QUIZ_RESULT}} - Hvor Bør Du Dra På Ferie?" href="https://www.facebook.com/dialog/feed?app_id=860704900727407&amp;link=&amp;name=Where+Should+You+Go+On+Vacation%3F&amp;caption=Not+sure+where+to+go+for+your+next+vacation%3F+Try+this+short+quiz.&amp;description=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"></path></svg><span class="waz_qc_share_name">Del</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_twitter" data-sharestring="I got {{MY_QUIZ_RESULT}} - Hvor Bør Du Dra På Ferie?" href="https://twitter.com/intent/tweet?url=&amp;text=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"></path></svg><span class="waz_qc_share_name">Tweet</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_pinterest" data-sharestring="I got {{MY_QUIZ_RESULT}} - Hvor Bør Du Dra På Ferie?" href="http://pinterest.com/pin/create/button/?url=&amp;description=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M14.02 1.57c-7.06 0-12.784 5.723-12.784 12.785S6.96 27.14 14.02 27.14c7.062 0 12.786-5.725 12.786-12.785 0-7.06-5.724-12.785-12.785-12.785zm1.24 17.085c-1.16-.09-1.648-.666-2.558-1.22-.5 2.627-1.113 5.146-2.925 6.46-.56-3.972.822-6.952 1.462-10.117-1.094-1.84.13-5.545 2.437-4.632 2.837 1.123-2.458 6.842 1.1 7.557 3.71.744 5.226-6.44 2.924-8.775-3.324-3.374-9.677-.077-8.896 4.754.19 1.178 1.408 1.538.49 3.168-2.13-.472-2.764-2.15-2.683-4.388.132-3.662 3.292-6.227 6.46-6.582 4.008-.448 7.772 1.474 8.29 5.24.58 4.254-1.815 8.864-6.1 8.532v.003z"></path></svg><span class="waz_qc_share_name">Pin</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_email" data-sharestring="I got {{MY_QUIZ_RESULT}} - Hvor Bør Du Dra På Ferie?" href="mailto:?body=&amp;subject=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M20.11 26.147c-2.335 1.05-4.36 1.4-7.124 1.4C6.524 27.548.84 22.916.84 15.284.84 7.343 6.602.45 15.4.45c6.854 0 11.8 4.7 11.8 11.252 0 5.684-3.193 9.265-7.398 9.3-1.83 0-3.153-.934-3.347-2.997h-.077c-1.208 1.986-2.96 2.997-5.023 2.997-2.532 0-4.36-1.868-4.36-5.062 0-4.75 3.503-9.07 9.11-9.07 1.713 0 3.7.4 4.6.972l-1.17 7.203c-.387 2.298-.115 3.3 1 3.4 1.674 0 3.774-2.102 3.774-6.58 0-5.06-3.27-8.994-9.304-8.994C9.05 2.87 3.83 7.545 3.83 14.97c0 6.5 4.2 10.2 10 10.202 1.987 0 4.09-.43 5.647-1.245l.634 2.22zM16.647 10.1c-.31-.078-.7-.155-1.207-.155-2.572 0-4.596 2.53-4.596 5.53 0 1.5.7 2.4 1.9 2.4 1.44 0 2.96-1.83 3.31-4.088l.592-3.72z"></path></svg><span class="waz_qc_share_name">Epost</span></a></div> 
+
+				<div class="waz_qc_quiz_footer" style="display: none;">
+					<span class="waz_qc_question_count"></span>
+				</div>
+				<div class="waz_qc_your_answer_container" style="display:none;"><p class="waz_qc_your_answers_text">Ditt svar</p><div class="waz_qc_insert_response_above"></div></div> 
+			</div>
+			
+<h3 id="demo3">Demo 3</h3>
+<p>This personality quiz lets you know which version of Easy Pricing Tables you should buy. <span>Den illustrerer følgende Quiz Cat premium egenskaper:</span></p>
+<ul>
+<li>Personality Quiz</li>
+<li>Lead capture (name only, without “skip” button)</li>
+</ul>
+			<div class="waz_qc_quiz" id="waz_qc_quiz_46167">
+				<span class="waz_qc_mobile_check"></span>
+				<h2 class="waz_qc_quiz_title">What Easy Pricing Table License is Right for Me?</h2>
+				<p class="waz_qc_quiz_description"></p>
+				<img class="waz_qc_quiz_description_img" src="">
+				<button type="button" class="waz_qc_button waz_qc_start_button">Start Quiz</button>
+				<div class="flip-container waz_qc_quiz_div" style="display: none; height: 200px;">
+					<div class="waz-qc-flipper">
+						<div class="waz-qc-front" id="waz_qc_answer_container" style="height: 200px;"><p id="waz_qc_question">Spørsmål</p><img class="waz_qc_quiz_question_img" src=""><div class="waz_qc_answer_div waz-qc-threeup" data-question="1" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="2" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="3" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="4" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="5" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div></div> 
+						<div class="waz-qc-back" id="waz_qc_back_container" style="height: 200px;"><p id="waz_qc_question_right_or_wrong"></p><img class="waz_qc_quiz_question_img" src=""><span id="waz_qc_question_back"></span><p id="waz_qc_back_response_p" class="waz_qc_back_response">Ditt svar: <span id="waz_qc_your_answer"></span></p><p id="waz_qc_correct_answer_p" class="waz_qc_back_response">Riktig svar: <span id="waz_qc_correct_answer"></span></p><button type="button" class="waz_qc_next_question">Neste</button></div>
+					</div>
+				</div>
+				<div class="waz_qc_score_container" style="display:none;"><p class="waz_qc_score_text">Du fikk {{SCORE_CORRECT}} av {{SCORE_TOTAL}} </p><h3 class="waz_qc_score_title"></h3><img class="waz_qc_score_img" src=""><p class="waz_qc_score_desc"></p></div> 
+				<div class="waz_qc_quiz_footer" style="display: none;">
+					<span class="waz_qc_question_count"></span>
+				</div>
+				<div class="waz_qc_optin_container" style="display:none;"><h3 class="waz_qc_email_headline">Skriv inn din epost for å se ditt resultat</h3><input type="email" title="Vennligst skriv inn din epostadresse." id="waz_qc_email_input" placeholder="Din epost" class="waz_qc_text_input waz_qc_optin_input" name="waz_qc_email_input"><button type="button" class="waz_qc_button waz_qc_submit_email_button">Vis mitt resultat</button><br></div>
+				<div class="waz_qc_your_answer_container" style="display:none;"><p class="waz_qc_your_answers_text">Ditt svar</p><div class="waz_qc_insert_response_above"></div></div> 
+			</div>
+			
+<h3 id="demo4">Demo 4</h3>
+<p>This personality quiz tells you which WordPress host is right for you. <span>Den illustrerer følgende Quiz Cat premium egenskaper:</span></p>
+<ul>
+<li>Personality Quiz</li>
+<li>Lead capture (name only, with “skip” button)</li>
+</ul>
+			<div class="waz_qc_quiz" id="waz_qc_quiz_48055">
+				<span class="waz_qc_mobile_check"></span>
+				<h2 class="waz_qc_quiz_title">Which WordPress Host Is Right For You?</h2>
+				<p class="waz_qc_quiz_description">Choosing the right WordPress host can be overwhelming - this quiz helps.</p>
+				<img class="waz_qc_quiz_description_img" src="WordpressCat-800-400.png">
+				<button type="button" class="waz_qc_button waz_qc_start_button">Start Quiz</button>
+				<div class="flip-container waz_qc_quiz_div" style="display: none; height: 200px;">
+					<div class="waz-qc-flipper">
+						<div class="waz-qc-front" id="waz_qc_answer_container" style="height: 200px;"><p id="waz_qc_question">Spørsmål</p><img class="waz_qc_quiz_question_img" src=""><div class="waz_qc_answer_div waz-qc-threeup" data-question="1" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="2" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="3" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="4" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div></div> 
+						<div class="waz-qc-back" id="waz_qc_back_container" style="height: 200px;"><p id="waz_qc_question_right_or_wrong"></p><img class="waz_qc_quiz_question_img" src=""><span id="waz_qc_question_back"></span><p id="waz_qc_back_response_p" class="waz_qc_back_response">Ditt svar: <span id="waz_qc_your_answer"></span></p><p id="waz_qc_correct_answer_p" class="waz_qc_back_response">Riktig svar: <span id="waz_qc_correct_answer"></span></p><button type="button" class="waz_qc_next_question">Neste</button></div>
+					</div>
+				</div>
+				<div class="waz_qc_score_container" style="display:none;"><p class="waz_qc_score_text">Du fikk {{SCORE_CORRECT}} av {{SCORE_TOTAL}} </p><h3 class="waz_qc_score_title"></h3><img class="waz_qc_score_img" src=""><p class="waz_qc_score_desc"></p></div><div class="waz_qc_social_share" style="display:none;"><h3>DEL DITT RESULTAT</h3><a class="waz_qc_share_link" id="waz_qc_share_link_facebook" data-sharestring="I got {{MY_QUIZ_RESULT}} - Which WordPress Host Is Right For You?" href="https://www.facebook.com/dialog/feed?app_id=860704900727407&amp;link=&amp;name=Which+WordPress+Host+Is+Right+For+You%3F&amp;caption=Choosing+the+right+WordPress+host+can+be+overwhelming+-+this+quiz+helps.&amp;description=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"></path></svg><span class="waz_qc_share_name">Del</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_twitter" data-sharestring="I got {{MY_QUIZ_RESULT}} - Which WordPress Host Is Right For You?" href="https://twitter.com/intent/tweet?url=&amp;text=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"></path></svg><span class="waz_qc_share_name">Tweet</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_pinterest" data-sharestring="I got {{MY_QUIZ_RESULT}} - Which WordPress Host Is Right For You?" href="http://pinterest.com/pin/create/button/?url=&amp;description=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M14.02 1.57c-7.06 0-12.784 5.723-12.784 12.785S6.96 27.14 14.02 27.14c7.062 0 12.786-5.725 12.786-12.785 0-7.06-5.724-12.785-12.785-12.785zm1.24 17.085c-1.16-.09-1.648-.666-2.558-1.22-.5 2.627-1.113 5.146-2.925 6.46-.56-3.972.822-6.952 1.462-10.117-1.094-1.84.13-5.545 2.437-4.632 2.837 1.123-2.458 6.842 1.1 7.557 3.71.744 5.226-6.44 2.924-8.775-3.324-3.374-9.677-.077-8.896 4.754.19 1.178 1.408 1.538.49 3.168-2.13-.472-2.764-2.15-2.683-4.388.132-3.662 3.292-6.227 6.46-6.582 4.008-.448 7.772 1.474 8.29 5.24.58 4.254-1.815 8.864-6.1 8.532v.003z"></path></svg><span class="waz_qc_share_name">Pin</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_email" data-sharestring="I got {{MY_QUIZ_RESULT}} - Which WordPress Host Is Right For You?" href="mailto:?body=&amp;subject=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M20.11 26.147c-2.335 1.05-4.36 1.4-7.124 1.4C6.524 27.548.84 22.916.84 15.284.84 7.343 6.602.45 15.4.45c6.854 0 11.8 4.7 11.8 11.252 0 5.684-3.193 9.265-7.398 9.3-1.83 0-3.153-.934-3.347-2.997h-.077c-1.208 1.986-2.96 2.997-5.023 2.997-2.532 0-4.36-1.868-4.36-5.062 0-4.75 3.503-9.07 9.11-9.07 1.713 0 3.7.4 4.6.972l-1.17 7.203c-.387 2.298-.115 3.3 1 3.4 1.674 0 3.774-2.102 3.774-6.58 0-5.06-3.27-8.994-9.304-8.994C9.05 2.87 3.83 7.545 3.83 14.97c0 6.5 4.2 10.2 10 10.202 1.987 0 4.09-.43 5.647-1.245l.634 2.22zM16.647 10.1c-.31-.078-.7-.155-1.207-.155-2.572 0-4.596 2.53-4.596 5.53 0 1.5.7 2.4 1.9 2.4 1.44 0 2.96-1.83 3.31-4.088l.592-3.72z"></path></svg><span class="waz_qc_share_name">Epost</span></a></div> 
+				
+				<div class="waz_qc_quiz_footer" style="display: none;">
+					<span class="waz_qc_question_count"></span>
+				</div>
+				<div class="waz_qc_optin_container" style="display:none;"><h3 class="waz_qc_email_headline">Skriv inn din epost for å se ditt resultat</h3><input type="email" title="Vennligst skriv inn din epostadresse." id="waz_qc_email_input" placeholder="Din epost" class="waz_qc_text_input waz_qc_optin_input" name="waz_qc_email_input"><button type="button" class="waz_qc_button waz_qc_submit_email_button">Vis mitt resultat</button><br><button type="button" class="waz_qc_skip_email_button">Hopp over</button></div>				
+				<div class="waz_qc_your_answer_container" style="display:none;"><p class="waz_qc_your_answers_text">Ditt svar</p><div class="waz_qc_insert_response_above"></div></div> 
+			</div>
+			
+<h3 id="demo5">Demo 5</h3>
+<p>This quiz tells you how secure your WordPress site is. <span>Den illustrerer følgende Quiz Cat premium egenskaper:</span></p>
+<ul>
+<li>Social sharing buttons</li>
+<li>Retake Quiz Button</li>
+<li>Shuffle Spørsmål Order</li>
+</ul>
+			<div class="waz_qc_quiz" id="waz_qc_quiz_50070">
+				<span class="waz_qc_mobile_check"></span>
+				<h2 class="waz_qc_quiz_title">How Secure is Your WordPress Site?</h2>
+				<p class="waz_qc_quiz_description">Are you at risk of getting hacked?</p>
+				<img class="waz_qc_quiz_description_img" src="cyber-security-1.jpg">
+				<button type="button" class="waz_qc_button waz_qc_start_button">Start Quiz</button>
+				<div class="flip-container waz_qc_quiz_div" style="display: none; height: 200px;">
+					<div class="waz-qc-flipper">
+						<div class="waz-qc-front" id="waz_qc_answer_container" style="height: 200px;"><p id="waz_qc_question">Spørsmål</p><img class="waz_qc_quiz_question_img" src=""><div class="waz_qc_answer_div waz-qc-threeup" data-question="1" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="2" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="3" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div><div class="waz_qc_answer_div waz-qc-threeup" data-question="4" style="height: auto;"><img class="waz_qc_quiz_answer_img" src="" style="margin-bottom: 0px;"><span class="waz_qc_answer_span"></span></div></div> 
+						<div class="waz-qc-back" id="waz_qc_back_container" style="height: 200px;"><p id="waz_qc_question_right_or_wrong"></p><img class="waz_qc_quiz_question_img" src=""><span id="waz_qc_question_back"></span><p id="waz_qc_back_response_p" class="waz_qc_back_response">Ditt svar: <span id="waz_qc_your_answer"></span></p><p id="waz_qc_correct_answer_p" class="waz_qc_back_response">Riktig svar: <span id="waz_qc_correct_answer"></span></p><button type="button" class="waz_qc_next_question">Neste</button></div>
+					</div>
+				</div>
+				<div class="waz_qc_score_container" style="display:none;"><p class="waz_qc_score_text">Du fikk {{SCORE_CORRECT}} av {{SCORE_TOTAL}} </p><h3 class="waz_qc_score_title"></h3><img class="waz_qc_score_img" src=""><p class="waz_qc_score_desc"></p></div><div class="waz_qc_social_share" style="display:none;"><h3>DEL DITT RESULTAT</h3><a class="waz_qc_share_link" id="waz_qc_share_link_facebook" data-sharestring="I got {{MY_QUIZ_RESULT}} - How Secure is Your WordPress Site?" href="https://www.facebook.com/dialog/feed?app_id=860704900727407&amp;link=&amp;name=How+Secure+is+Your+WordPress+Site%3F&amp;caption=Are+you+at+risk+of+getting+hacked%3F&amp;description=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29"><path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"></path></svg><span class="waz_qc_share_name">Del</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_twitter" data-sharestring="I got {{MY_QUIZ_RESULT}} - How Secure is Your WordPress Site?" href="https://twitter.com/intent/tweet?url=&amp;text=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62a15.093 15.093 0 0 1-8.86-2.32c2.702.18 5.375-.648 7.507-2.32a5.417 5.417 0 0 1-4.49-3.64c.802.13 1.62.077 2.4-.154a5.416 5.416 0 0 1-4.412-5.11 5.43 5.43 0 0 0 2.168.387A5.416 5.416 0 0 1 2.89 4.498a15.09 15.09 0 0 0 10.913 5.573 5.185 5.185 0 0 1 3.434-6.48 5.18 5.18 0 0 1 5.546 1.682 9.076 9.076 0 0 0 3.33-1.317 5.038 5.038 0 0 1-2.4 2.942 9.068 9.068 0 0 0 3.02-.85 5.05 5.05 0 0 1-2.48 2.71z"></path></svg><span class="waz_qc_share_name">Tweet</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_pinterest" data-sharestring="I got {{MY_QUIZ_RESULT}} - How Secure is Your WordPress Site?" href="http://pinterest.com/pin/create/button/?url=&amp;description=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M14.02 1.57c-7.06 0-12.784 5.723-12.784 12.785S6.96 27.14 14.02 27.14c7.062 0 12.786-5.725 12.786-12.785 0-7.06-5.724-12.785-12.785-12.785zm1.24 17.085c-1.16-.09-1.648-.666-2.558-1.22-.5 2.627-1.113 5.146-2.925 6.46-.56-3.972.822-6.952 1.462-10.117-1.094-1.84.13-5.545 2.437-4.632 2.837 1.123-2.458 6.842 1.1 7.557 3.71.744 5.226-6.44 2.924-8.775-3.324-3.374-9.677-.077-8.896 4.754.19 1.178 1.408 1.538.49 3.168-2.13-.472-2.764-2.15-2.683-4.388.132-3.662 3.292-6.227 6.46-6.582 4.008-.448 7.772 1.474 8.29 5.24.58 4.254-1.815 8.864-6.1 8.532v.003z"></path></svg><span class="waz_qc_share_name">Pin</span></a><a class="waz_qc_share_link" id="waz_qc_share_link_email" data-sharestring="I got {{MY_QUIZ_RESULT}} - How Secure is Your WordPress Site?" href="mailto:?body=&amp;subject=" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M20.11 26.147c-2.335 1.05-4.36 1.4-7.124 1.4C6.524 27.548.84 22.916.84 15.284.84 7.343 6.602.45 15.4.45c6.854 0 11.8 4.7 11.8 11.252 0 5.684-3.193 9.265-7.398 9.3-1.83 0-3.153-.934-3.347-2.997h-.077c-1.208 1.986-2.96 2.997-5.023 2.997-2.532 0-4.36-1.868-4.36-5.062 0-4.75 3.503-9.07 9.11-9.07 1.713 0 3.7.4 4.6.972l-1.17 7.203c-.387 2.298-.115 3.3 1 3.4 1.674 0 3.774-2.102 3.774-6.58 0-5.06-3.27-8.994-9.304-8.994C9.05 2.87 3.83 7.545 3.83 14.97c0 6.5 4.2 10.2 10 10.202 1.987 0 4.09-.43 5.647-1.245l.634 2.22zM16.647 10.1c-.31-.078-.7-.155-1.207-.155-2.572 0-4.596 2.53-4.596 5.53 0 1.5.7 2.4 1.9 2.4 1.44 0 2.96-1.83 3.31-4.088l.592-3.72z"></path></svg><span class="waz_qc_share_name">Epost</span></a></div> 
+				
+				<div class="waz_qc_quiz_footer" style="display: none;">
+					<span class="waz_qc_question_count"></span>
+				</div>
+				<div class="waz_qc_your_answer_container" style="display:none;"><p class="waz_qc_your_answers_text">Ditt svar</p><div class="waz_qc_insert_response_above"></div></div>
+			</div>
+
+</div>
+
+<link rel="stylesheet" id="waz_qc_quiz_stylesheet-css" href="quiz.css" type="text/css" media="all">
+<link rel="stylesheet" id="waz_qc_tooltipster_stylesheet-css" href="tooltipster.bundle.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="waz_qc_tooltipster_borderless_css-css" href="tooltipster-sideTip-borderless.min.css" type="text/css" media="all">
+<script type="text/javascript">
+    var quizData_41099 = {
+        "quiz_id": "41099",
+        "quiz_meta": {
+            "desc": "Padawan or Jedi Master? Try this Quiz Cat live demo.",
+            "desc_img_src": "https:\/\/fatcatapps.com\/wp-content\/uploads\/starwars-title.jpg",
+            "title": "Den ultimate Star Wars Quizzen"
+        },
+        "questions": [{
+            "question": "What's the name of the planet on which the Rebel Alliance's Echo Base (as featured in Episode 5) is located?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/hoth.jpg",
+            "id": "406d8350-a067-42ee-bf17-573ecd1cef62",
+            "answers": [{
+                "answer": "Hoth",
+                "img": "",
+                "id": "0b526a20-a224-454c-9f30-6454659bf4b1"
+            }, {
+                "answer": "Endor",
+                "img": "",
+                "id": "d8bbbd88-b48a-4b8b-8063-ab834ca11855"
+            }, {
+                "answer": "Dagobah",
+                "img": "",
+                "id": "1dcb5823-9f84-4242-af35-a0e660b91033"
+            }, {
+                "answer": "Coruscant",
+                "img": "",
+                "id": "c9f266f3-9c2e-4b4c-9af2-3863700c6d6b"
+            }]
+        }, {
+            "question": "Which quote is Admiral Ackbar famous for?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/ackbar.jpg",
+            "id": "ff0c3819-e620-449b-88ce-5466bed8592a",
+            "answers": [{
+                "answer": "It's a trap!",
+                "img": "",
+                "id": "9b71b10f-b975-4507-bf13-38f92e2b6f86"
+            }, {
+                "answer": "It's not my fault!",
+                "img": "",
+                "id": "97d2b13d-98de-48e9-8d10-0aaf6741c471"
+            }, {
+                "answer": "I am your father.",
+                "img": "",
+                "id": "c83741e1-7b8f-4d2a-b8fe-dd26bcd31858"
+            }]
+        }, {
+            "question": "What did Yoda say to Luke as he was attempting to raise his X-Wing out of Dagobah's swamp?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/yoda.jpg",
+            "id": "a119461c-e993-4bd2-bd43-8f987f992003",
+            "answers": [{
+                "answer": "Do. Or do not. There is no try.",
+                "img": "",
+                "id": "72a67830-69b0-4675-9903-e695d550bc89"
+            }, {
+                "answer": "Wars not make one great.",
+                "img": "",
+                "id": "7e6f2749-0170-40bd-93f7-41a6de95bcda"
+            }, {
+                "answer": "Fear is the path to the dark side\u2026fear leads to anger\u2026anger leads to hate\u2026hate leads to suffering.",
+                "img": "",
+                "id": "9682da98-609b-4e11-9c4a-b506b0bdae09"
+            }]
+        }, {
+            "question": "Which place did Obi Wan refer to when he said \"You will never find a more wretched hive of scum and villainy.\"?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/14285096344_cb223898ae_z.jpg",
+            "id": "09b9a981-45a4-4991-b952-32c943315117",
+            "answers": [{
+                "answer": "Mos Eisley Spaceport",
+                "img": "",
+                "id": "92181013-c361-4f30-a981-51261f1a0c24"
+            }, {
+                "answer": "Jabba's Palace",
+                "img": "",
+                "id": "c22eba5d-10ff-4aae-beca-f82f54f34cda"
+            }, {
+                "answer": "The First Death Star",
+                "img": "",
+                "id": "8b8528ea-8d0c-4cd4-b7a8-fbd35d825eee"
+            }]
+        }, {
+            "question": "Who is Lord Vader's son?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/2383102647_c98f1b6a5f_z.jpg",
+            "id": "ac058587-e61f-4cab-a783-6e756d0ca614",
+            "answers": [{
+                "answer": "Luke Sywalker",
+                "img": "",
+                "id": "498d3015-474f-4a69-b441-3e58ca7b57d6"
+            }, {
+                "answer": "Anakin Skywalker",
+                "img": "",
+                "id": "659012a8-983a-4a7d-9647-a63240c4dd12"
+            }, {
+                "answer": "Chewbacca",
+                "img": "",
+                "id": "b5d984c4-3a19-445f-9155-b408b0f3fd00"
+            }]
+        }, {
+            "question": "Chewbacca's growling sounds are based on which animals?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/7053120529_237e38f4ea_z.jpg",
+            "id": "520a94d4-2394-4e24-81a2-e34d849cc26e",
+            "answers": [{
+                "answer": "Bears, badgers, and walruses.",
+                "img": "",
+                "id": "1ff1ad6e-71dd-4223-b1b8-5ed255abfb43"
+            }, {
+                "answer": "Elephants and tigers.",
+                "img": "",
+                "id": "54ddfac6-56e2-45b9-88eb-ecb85b94944d"
+            }]
+        }],
+        "quiz_results": [{
+            "title": "Padawan",
+            "desc": "Meh. As Yoda said, \"much to learn you still have...my padawan.\"",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/padawan.jpg",
+            "min": "0",
+            "max": "3"
+        }, {
+            "title": "Jedi Master",
+            "desc": "Great job! Yoda would be proud.",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/4884525455_4df2c65faf_z.jpg",
+            "min": "4",
+            "max": "6"
+        }],
+        "quiz_settings": {
+            "quiz_type": "mc",
+            "hide_answers": "end",
+            "shuffle_questions": "",
+            "restart_button": "",
+            "show_sharing": "on",
+            "show_facebook": "on",
+            "show_twitter": "on",
+            "show_pinterest": "on",
+            "show_email": "on"
+        },
+        "wrong_string": "Feil!",
+        "correct_string": "Riktig!",
+        "your_answer_string": "Ditt svar:",
+        "correct_answer_string": "Riktig svar:",
+        "optin_settings": {
+            "capture_emails": "on",
+            "show_name": "on",
+            "skip_optin": "on",
+            "headline_text": "Skriv inn din epost for å se ditt resultat",
+            "button_text": "Vis mitt resultat",
+            "provider": "zapier",
+            "api_key": "",
+            "single_optin": "",
+            "mailing_list": "",
+            "mailchimp_groups": "",
+            "zapier_url": "",
+            "getresponse_list": "",
+            "getresponse_key": "",
+            "aweber_key": "",
+            "aweber_list": "",
+            "aweber_tags": "",
+            "activecampaign_url": "",
+            "activecampaign_key": "",
+            "activecampaign_list": "",
+            "activecampaign_tags": "",
+            "drip_id": "",
+            "drip_key": "",
+            "drip_list": "",
+            "drip_tags": ""
+        },
+        "nonce": "",
+        "ajaxurl": "http://server.wazalo.com:3000",
+        "default_img": ""
+    };
+    var quizData_46218 = {
+        "quiz_id": "46218",
+        "quiz_meta": {
+            "desc": "Ikke sikker på hvor du bør dra på neste ferie? Forsøk denne quizen.",
+            "desc_img_src": "https:\/\/fatcatapps.com\/wp-content\/uploads\/suitcase.jpg",
+            "title": "Hvor Bør Du Dra På Ferie?"
+        },
+        "questions": [{
+            "question": "What's your ideal dinner?",
+            "img": "",
+            "answers": [{
+                "answer": "Sushi",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/sushi-1.jpg",
+                "results": ["ec48b14a-0ec1-4cdd-b07a-f91bd57047d4"]
+            }, {
+                "answer": "Tapas",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/tapas-1.jpg",
+                "results": ["d22ef9f3-d801-4b68-a257-2a659d072f0d"]
+            }, {
+                "answer": "Clam Chowder",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/chowder2.jpg",
+                "results": ["ef7643bd-7d10-44a3-826c-1426fa0cbf01"]
+            }, {
+                "answer": "Vegan",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/berries-1.jpg",
+                "results": ["7377b6e0-0f1c-4f80-9aee-f94faefd7535"]
+            }]
+        }, {
+            "question": "Choose a drink",
+            "img": "",
+            "answers": [{
+                "answer": "Sake",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/sake.jpg",
+                "results": ["ec48b14a-0ec1-4cdd-b07a-f91bd57047d4"]
+            }, {
+                "answer": "Mango Smoothie",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/mango.jpg",
+                "results": ["7377b6e0-0f1c-4f80-9aee-f94faefd7535"]
+            }, {
+                "answer": "Cocktails",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/cocktail.jpg",
+                "results": ["ef7643bd-7d10-44a3-826c-1426fa0cbf01"]
+            }, {
+                "answer": "Sparkling Wine",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/wine.jpg",
+                "results": ["d22ef9f3-d801-4b68-a257-2a659d072f0d"]
+            }]
+        }, {
+            "question": "What does your ideal day look like?",
+            "img": "",
+            "answers": [{
+                "answer": "Hanging out at the beach",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/beach.jpg",
+                "results": ["7377b6e0-0f1c-4f80-9aee-f94faefd7535", "d22ef9f3-d801-4b68-a257-2a659d072f0d"]
+            }, {
+                "answer": "Cafe hopping & shopping",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/cafe.jpg",
+                "results": ["d22ef9f3-d801-4b68-a257-2a659d072f0d", "ec48b14a-0ec1-4cdd-b07a-f91bd57047d4", "ef7643bd-7d10-44a3-826c-1426fa0cbf01"]
+            }]
+        }, {
+            "question": "Which evening plan sounds best?",
+            "img": "",
+            "answers": [{
+                "answer": "Have sunset beers",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/sunset.jpg",
+                "results": ["7377b6e0-0f1c-4f80-9aee-f94faefd7535"]
+            }, {
+                "answer": "Go to a maid cafe",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/maid-cafe.jpg",
+                "results": ["ec48b14a-0ec1-4cdd-b07a-f91bd57047d4"]
+            }, {
+                "answer": "Go clubbing & dance all night",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/dj.jpg",
+                "results": ["d22ef9f3-d801-4b68-a257-2a659d072f0d", "ef7643bd-7d10-44a3-826c-1426fa0cbf01"]
+            }]
+        }, {
+            "question": "Which activity sounds best?",
+            "img": "",
+            "answers": [{
+                "answer": "Surfing",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/surf.jpg",
+                "results": ["7377b6e0-0f1c-4f80-9aee-f94faefd7535"]
+            }, {
+                "answer": "Playing Pokemon Go",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/snorlax.jpg",
+                "results": ["ec48b14a-0ec1-4cdd-b07a-f91bd57047d4", "ef7643bd-7d10-44a3-826c-1426fa0cbf01"]
+            }, {
+                "answer": "Doing Yoga",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/yoga.jpg",
+                "results": ["7377b6e0-0f1c-4f80-9aee-f94faefd7535"]
+            }, {
+                "answer": "Sunbathing",
+                "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/sun.jpg",
+                "results": ["d22ef9f3-d801-4b68-a257-2a659d072f0d"]
+            }]
+        }],
+        "quiz_results": [{
+            "title": "Bali",
+            "desc": "You should go to Bali for your next vacation. Gorgeous beaches & world-class surfing. Yoga, temples, monkeys and incredible sunsets. What's not to love?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/bali.jpg",
+            "id": "7377b6e0-0f1c-4f80-9aee-f94faefd7535"
+        }, {
+            "title": "Barcelona",
+            "desc": "You should go to Barcelona for your next vacation. Tapas, wine & sangria. Beautiful architecture, great beaches and a buzzing nightlife. What's not to love?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/barcelona.jpg",
+            "id": "d22ef9f3-d801-4b68-a257-2a659d072f0d"
+        }, {
+            "title": "Tokyo",
+            "desc": "You should go to Tokyo for your next vacation. Sushi & Sake. Cherry blossoms & hot springs. Bullet trains, maid cafes & robots. What's not to love?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/tokyo.jpg",
+            "id": "ec48b14a-0ec1-4cdd-b07a-f91bd57047d4"
+        }, {
+            "title": "New York City",
+            "desc": "You should go to the \"Big Apple\" for your next vacation. Tons of dining and shopping. Amazing nightlife and tons of art. Buzzing with energy. What's not to love?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/nyc.jpg",
+            "id": "ef7643bd-7d10-44a3-826c-1426fa0cbf01"
+        }],
+        "quiz_settings": {
+            "quiz_type": "pt",
+            "hide_answers": "after",
+            "shuffle_questions": "",
+            "restart_button": "",
+            "show_sharing": "on",
+            "show_facebook": "on",
+            "show_twitter": "on",
+            "show_pinterest": "on",
+            "show_email": "on"
+        },
+        "wrong_string": "Feil!",
+        "correct_string": "Riktig!",
+        "your_answer_string": "Ditt svar:",
+        "correct_answer_string": "Riktig svar:",
+        "optin_settings": {
+            "capture_emails": "",
+            "show_name": "",
+            "skip_optin": "",
+            "headline_text": "Skriv inn din epost for å se ditt resultat",
+            "button_text": "Vis mitt resultat",
+            "provider": "zapier",
+            "api_key": "",
+            "single_optin": "",
+            "mailing_list": "",
+            "mailchimp_groups": "",
+            "zapier_url": "",
+            "getresponse_list": "",
+            "getresponse_key": "",
+            "aweber_key": "",
+            "aweber_list": "",
+            "aweber_tags": ""
+        },
+        "nonce": "",
+        "ajaxurl": "http://server.wazalo.com:3000",
+        "default_img": ""
+    };
+    var quizData_46167 = {
+        "quiz_id": "46167",
+        "quiz_meta": {
+            "desc": "",
+            "desc_img_src": "",
+            "title": "What Easy Pricing Table License is Right for Me?"
+        },
+        "questions": [{
+            "question": "Do you have an existing eCommerce plugin?",
+            "img": "",
+            "answers": [{
+                "answer": "Easy Digital Downloads",
+                "img": "",
+                "results": ["94a9576e-3ba5-45a2-a436-8864a90caf35", "fc58464d-6c74-4397-bfe1-04ab7eca4bd0"]
+            }, {
+                "answer": "WooCommerce",
+                "img": "",
+                "results": ["94a9576e-3ba5-45a2-a436-8864a90caf35", "fc58464d-6c74-4397-bfe1-04ab7eca4bd0"]
+            }, {
+                "answer": "WP Simple Pay Pro for Stripe",
+                "img": "",
+                "results": ["94a9576e-3ba5-45a2-a436-8864a90caf35", "fc58464d-6c74-4397-bfe1-04ab7eca4bd0"]
+            }, {
+                "answer": "No, I don't use an eCommerce plugin",
+                "img": "",
+                "results": ["cc8a8f7f-0f1f-4314-bec7-28d12913d552"]
+            }, {
+                "answer": "I use another plugin",
+                "img": "",
+                "results": ["cc8a8f7f-0f1f-4314-bec7-28d12913d552"]
+            }]
+        }, {
+            "question": "How many sites do you plan to use the plugin on?",
+            "img": "",
+            "answers": [{
+                "answer": "Just 1 site",
+                "img": "",
+                "results": ["cc8a8f7f-0f1f-4314-bec7-28d12913d552"]
+            }, {
+                "answer": "2-5 sites",
+                "img": "",
+                "results": ["fc58464d-6c74-4397-bfe1-04ab7eca4bd0"]
+            }, {
+                "answer": "5 or more sites",
+                "img": "",
+                "results": ["94a9576e-3ba5-45a2-a436-8864a90caf35"]
+            }, {
+                "answer": "Not sure",
+                "img": "",
+                "results": ["fc58464d-6c74-4397-bfe1-04ab7eca4bd0"]
+            }]
+        }, {
+            "question": "Do you use Google Analytics?",
+            "img": "",
+            "answers": [{
+                "answer": "Yes",
+                "img": "",
+                "results": ["94a9576e-3ba5-45a2-a436-8864a90caf35", "fc58464d-6c74-4397-bfe1-04ab7eca4bd0"]
+            }, {
+                "answer": "No",
+                "img": "",
+                "results": ["cc8a8f7f-0f1f-4314-bec7-28d12913d552"]
+            }]
+        }, {
+            "question": "Do you offer monthly\/annual plans, or do you want to display multiple currencies (eg. USD\/EUR)?",
+            "img": "",
+            "answers": [{
+                "answer": "Yes",
+                "img": "",
+                "results": ["94a9576e-3ba5-45a2-a436-8864a90caf35", "fc58464d-6c74-4397-bfe1-04ab7eca4bd0"]
+            }, {
+                "answer": "No",
+                "img": "",
+                "results": ["cc8a8f7f-0f1f-4314-bec7-28d12913d552"]
+            }]
+        }],
+        "quiz_results": [{
+            "title": "Easy Pricing Tables Elite",
+            "desc": "Easy Pricing Tables Business is right for you. Here's what you'll get:\r\n<br \/>\r\n<ul>\r\n<li>Install the plugin on <strong>unlimited sites<\/strong><\/li>\r\n<li>Google Analytics Integration<\/li>\r\n<li>Pricing Toggles (so you can switch between monthly\/yearly pricing, or multiple currencies such as EUR\/GBP\/USD<\/li>\r\n<li>1-click integration with WooCommerce, Easy Digital Downloads and WP Simple Pay Pro for Stripe<\/li>\r\n<\/ul>",
+            "img": "",
+            "id": "94a9576e-3ba5-45a2-a436-8864a90caf35"
+        }, {
+            "title": "Easy Pricing Tables Business",
+            "desc": "Easy Pricing Tables Business is right for you. Here's what you'll get:\r\n<br \/>\r\n<ul>\r\n<li>Install the plugin on up to 5 sites<\/li>\r\n<li>Google Analytics Integration<\/li>\r\n<li>Pricing Toggles (so you can switch between monthly\/yearly pricing, or multiple currencies such as EUR\/GBP\/USD<\/li>\r\n<li>1-click integration with WooCommerce, Easy Digital Downloads and WP Simple Pay Pro for Stripe<\/li>\r\n<\/ul>",
+            "img": "",
+            "id": "fc58464d-6c74-4397-bfe1-04ab7eca4bd0"
+        }, {
+            "title": "Easy Pricing Tables Personal",
+            "desc": "Sounds like our basic, \"Personal\" version of Easy Pricing Tables is right for you.",
+            "img": "",
+            "id": "cc8a8f7f-0f1f-4314-bec7-28d12913d552"
+        }],
+        "quiz_settings": {
+            "quiz_type": "pt",
+            "hide_answers": "after",
+            "shuffle_questions": "",
+            "restart_button": "",
+            "show_sharing": "",
+            "show_facebook": "",
+            "show_twitter": "",
+            "show_pinterest": "",
+            "show_email": ""
+        },
+        "wrong_string": "Feil!",
+        "correct_string": "Riktig!",
+        "your_answer_string": "Ditt svar:",
+        "correct_answer_string": "Riktig svar:",
+        "optin_settings": {
+            "capture_emails": "on",
+            "show_name": "",
+            "skip_optin": "",
+            "headline_text": "Skriv inn din epost for å se ditt resultat",
+            "button_text": "Vis mitt resultat",
+            "provider": "zapier",
+            "api_key": "",
+            "single_optin": "",
+            "mailing_list": "",
+            "mailchimp_groups": "",
+            "zapier_url": "",
+            "getresponse_list": "",
+            "getresponse_key": "",
+            "aweber_key": "",
+            "aweber_list": "",
+            "aweber_tags": ""
+        },
+        "nonce": "",
+        "ajaxurl": "http://server.wazalo.com:3000",
+        "default_img": ""
+    };
+    var quizData_48055 = {
+        "quiz_id": "48055",
+        "quiz_meta": {
+            "desc": "Choosing the right WordPress host can be overwhelming - this quiz helps.",
+            "desc_img_src": "https:\/\/fatcatapps.com\/wp-content\/uploads\/WordpressCat-800-400.png",
+            "title": "Which WordPress Host Is Right For You?"
+        },
+        "questions": [{
+            "question": "Does your website help you generate sales?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/cash-cat-1.png",
+            "id": "f04004b1-6e80-4797-9677-db4edbae6670",
+            "answers": [{
+                "answer": "Yes",
+                "img": "",
+                "results": ["ebcc93d9-6aef-4a5b-9f99-eb6c263aaf1e", "6c25ab2a-0aa1-477d-968d-5d9fb7078806", "4f70bd18-fd53-43ad-ad4c-f6417ecad9d4"],
+                "id": "0859579e-7f9d-486e-9e94-1c83d46d8a2d"
+            }, {
+                "answer": "No",
+                "img": "",
+                "results": ["3c9b349d-ef2c-4dac-b354-b5c7edbf6e24"],
+                "id": "4c9deac8-9df8-46e9-afa4-8ff7812849cc"
+            }]
+        }, {
+            "question": "What describes you best?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/blogging.jpg",
+            "id": "8d3eda16-8862-4209-aa56-a483bc30a8b9",
+            "answers": [{
+                "answer": "I'm a blogger.",
+                "img": "",
+                "results": ["ebcc93d9-6aef-4a5b-9f99-eb6c263aaf1e", "6c25ab2a-0aa1-477d-968d-5d9fb7078806", "4f70bd18-fd53-43ad-ad4c-f6417ecad9d4", "3c9b349d-ef2c-4dac-b354-b5c7edbf6e24"],
+                "id": "38d13765-bf59-40ca-881e-4528a8e69b87"
+            }, {
+                "answer": "I run an e-commerce or business website.",
+                "img": "",
+                "results": ["ebcc93d9-6aef-4a5b-9f99-eb6c263aaf1e", "6c25ab2a-0aa1-477d-968d-5d9fb7078806", "4f70bd18-fd53-43ad-ad4c-f6417ecad9d4"],
+                "id": "b9523016-36f9-492a-ab92-0fe69d63c36c"
+            }, {
+                "answer": "I build niche sites.",
+                "img": "",
+                "results": ["3c9b349d-ef2c-4dac-b354-b5c7edbf6e24"],
+                "id": "16a9411d-38ec-45d4-905d-1ffff29f032d"
+            }, {
+                "answer": "I build websites for clients.",
+                "img": "",
+                "results": ["6c25ab2a-0aa1-477d-968d-5d9fb7078806"],
+                "id": "8df63a6f-a539-484f-abe3-5be2034ee791"
+            }]
+        }, {
+            "question": "How technical are you?",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/SupportCat.png",
+            "id": "6d4a885f-6188-4d17-9cc8-bd467a2f63f1",
+            "answers": [{
+                "answer": "I want to get my hands dirty and have to ability to customize every aspect of my server configuration",
+                "img": "",
+                "results": ["ebcc93d9-6aef-4a5b-9f99-eb6c263aaf1e"],
+                "id": "22d4cbb0-781f-4a80-8c78-a066dd36e277"
+            }, {
+                "answer": "I want a super simple, easy to use interface.",
+                "img": "",
+                "results": ["6c25ab2a-0aa1-477d-968d-5d9fb7078806"],
+                "id": "c1005070-5d90-4b27-82c8-ccb5da2a4e18"
+            }, {
+                "answer": "I want a reasonably simple interface but also the ability to dive into tech-stuff.",
+                "img": "",
+                "results": ["4f70bd18-fd53-43ad-ad4c-f6417ecad9d4", "3c9b349d-ef2c-4dac-b354-b5c7edbf6e24"],
+                "id": "2add1e16-274c-4dcb-b36e-8eee020fdea5"
+            }]
+        }, {
+            "question": "What's more important to you?",
+            "img": "",
+            "id": "5e537869-ffa4-4942-9fc3-af265e4a42f4",
+            "answers": [{
+                "answer": "Great support",
+                "img": "",
+                "results": ["ebcc93d9-6aef-4a5b-9f99-eb6c263aaf1e", "6c25ab2a-0aa1-477d-968d-5d9fb7078806", "4f70bd18-fd53-43ad-ad4c-f6417ecad9d4"],
+                "id": "41035a30-ae75-42e6-9b8c-43c76d95d82b"
+            }, {
+                "answer": "Saving money",
+                "img": "",
+                "results": ["3c9b349d-ef2c-4dac-b354-b5c7edbf6e24"],
+                "id": "e9c3e21b-74cb-42b0-acc0-e7a9f988467e"
+            }]
+        }, {
+            "question": "How much traffic do you get?",
+            "img": "",
+            "id": "0ce7f54c-f544-4237-9c49-b5fba410c073",
+            "answers": [{
+                "answer": "Thousands of monthly visitors",
+                "img": "",
+                "results": ["6c25ab2a-0aa1-477d-968d-5d9fb7078806", "4f70bd18-fd53-43ad-ad4c-f6417ecad9d4", "3c9b349d-ef2c-4dac-b354-b5c7edbf6e24"],
+                "id": "30966485-4d18-44e8-a627-15f27a0072c8"
+            }, {
+                "answer": "Hundreds of thousands of monthly visitors",
+                "img": "",
+                "results": ["ebcc93d9-6aef-4a5b-9f99-eb6c263aaf1e"],
+                "id": "8754948a-6692-49f2-863a-ec00c88ceea3"
+            }]
+        }, {
+            "question": "Do you want a staging site?",
+            "img": "",
+            "id": "4050b0c9-d85f-4ccc-8691-0bbf19aa7fe9",
+            "answers": [{
+                "answer": "Yes",
+                "img": "",
+                "results": "",
+                "id": "5e3df198-02f2-40f5-b457-5d9be3105b2e"
+            }, {
+                "answer": "No",
+                "img": "",
+                "results": "",
+                "id": "8a1e8fe7-2894-4a66-aff6-dc575415b59d"
+            }, {
+                "answer": "What's a staging site?",
+                "img": "",
+                "results": ["3c9b349d-ef2c-4dac-b354-b5c7edbf6e24"],
+                "id": "93fbc23f-eb3c-422f-84e1-818cfa7f8f5c"
+            }]
+        }],
+        "quiz_results": [{
+            "title": "Pagely",
+            "desc": "<p>Starting at $99 per month, Pagely is a powerful WordPress host that is best for businesses looking for big, scaleable WordPress installs that can handle large amounts of traffic.<\/p>\r\n<p>Pagely is built on top of Amazon Web Services (AWS) and offers advanced technical tools such as shell access, Git integration and load balancing. <a href=\"https:\/\/pagely.com\/\" target=\"_blank\">Learn more here.<\/a><\/p>\r\n\r\n",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/pagely-full-blue-trans640x220.png",
+            "id": "ebcc93d9-6aef-4a5b-9f99-eb6c263aaf1e"
+        }, {
+            "title": "FlyWheel",
+            "desc": "FlyWheel is a managed WordPress host geared towards WP designers and agencies. Pricing starts at $15\/mo for one site. They have great support and their interface is beautiful and easy to use. FlyWheel has some unique features aimed at designers & agencies, such as billing transfer and demo sites. <a href=\"https:\/\/getflywheel.com\" target=\"_blank\">Learn more here.<\/a>",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/flywheel-logo.png",
+            "id": "6c25ab2a-0aa1-477d-968d-5d9fb7078806"
+        }, {
+            "title": "WPEngine",
+            "desc": "WPEngine is probably the most-well known managed WordPress host. They\u2019re known for fast load speed, security and incredibly helpful support. WPEngine offers various advanced features such as staging sites, built in CDN and more and is ideal for business websites. Pricing starts at $29\/mo for one site. <a href=\"https:\/\/wpengine.com\" target=\"_blank\">Learn more here.<\/a>",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/wpengine.png",
+            "id": "4f70bd18-fd53-43ad-ad4c-f6417ecad9d4"
+        }, {
+            "title": "SiteGround",
+            "desc": "SiteGround\u2019s WordPress hosting starts at an incredible $3.95 per month, making it a great option for people just starting out with their blog or website. SiteGround is best for beginners and websites that don\u2019t generate a lot of revenue. <a href=\"https:\/\/www.siteground.com\/wordpress-hosting.htm\">Learn more here.<\/a>\r\n\r\n",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/siteground.png",
+            "id": "3c9b349d-ef2c-4dac-b354-b5c7edbf6e24"
+        }],
+        "quiz_settings": {
+            "quiz_type": "pt",
+            "hide_answers": "after",
+            "shuffle_questions": "",
+            "restart_button": "",
+            "show_sharing": "on",
+            "show_facebook": "on",
+            "show_twitter": "on",
+            "show_pinterest": "on",
+            "show_email": "on"
+        },
+        "wrong_string": "Feil!",
+        "correct_string": "Riktig!",
+        "your_answer_string": "Ditt svar:",
+        "correct_answer_string": "Riktig svar:",
+        "optin_settings": {
+            "capture_emails": "on",
+            "show_name": "",
+            "skip_optin": "on",
+            "headline_text": "Skriv inn din epost for å se ditt resultat",
+            "button_text": "Vis mitt resultat",
+            "provider": "zapier",
+            "api_key": "",
+            "single_optin": "",
+            "mailing_list": "",
+            "mailchimp_groups": "",
+            "zapier_url": "https:\/\/hooks.zapier.com\/hooks\/catch\/253668\/6v6fcr\/",
+            "getresponse_list": "",
+            "getresponse_key": "",
+            "aweber_key": "",
+            "aweber_list": "",
+            "aweber_tags": "",
+            "activecampaign_url": "",
+            "activecampaign_key": "",
+            "activecampaign_list": "",
+            "activecampaign_tags": "",
+            "drip_id": "",
+            "drip_key": "",
+            "drip_list": "",
+            "drip_tags": ""
+        },
+        "nonce": "",
+        "ajaxurl": "http://server.wazalo.com:3000",
+        "default_img": ""
+    };
+    var quizData_50070 = {
+        "quiz_id": "50070",
+        "quiz_meta": {
+            "desc": "Are you at risk of getting hacked?",
+            "desc_img_src": "https:\/\/fatcatapps.com\/wp-content\/uploads\/cyber-security-1-copy.jpg",
+            "title": "How Secure is Your WordPress Site?"
+        },
+        "questions": [{
+            "question": "Do you keep your WordPress site (core, plugins, theme) updated?",
+            "img": "",
+            "answers": [{
+                "answer": "Yes",
+                "img": ""
+            }, {
+                "answer": "No",
+                "img": ""
+            }]
+        }, {
+            "question": "Which hosting company do you use?",
+            "img": "",
+            "answers": [{
+                "answer": "A WordPress-optimized host that emphasizes security. (WPEngine, Pagely, Flywheel, SiteGround, or similar.)",
+                "img": ""
+            }, {
+                "answer": "Some cheap host.",
+                "img": ""
+            }]
+        }, {
+            "question": "How do you choose your plugins & themes?",
+            "img": "",
+            "answers": [{
+                "answer": "I only install plugins & themes with good reviews on WordPress.org, or purchase them from reputable developers.",
+                "img": ""
+            }, {
+                "answer": "I install tons of plugins and leave them installed, even if I stop using them.",
+                "img": ""
+            }, {
+                "answer": "I install plugins from random websites or torrent sites.",
+                "img": ""
+            }]
+        }, {
+            "question": "What's your WP-Admin username?",
+            "img": "",
+            "answers": [{
+                "answer": "Something other than \"Admin\" =)",
+                "img": ""
+            }, {
+                "answer": "Admin",
+                "img": ""
+            }]
+        }, {
+            "question": "What kind of password do you use for your WordPress admin user?",
+            "img": "",
+            "answers": [{
+                "answer": "A strong, unique password.",
+                "img": ""
+            }, {
+                "answer": "123456",
+                "img": ""
+            }, {
+                "answer": "I use the same password for every site so it's easy to remember.",
+                "img": ""
+            }, {
+                "answer": "monkey",
+                "img": ""
+            }]
+        }, {
+            "question": "Do you have Two-Step Authentication set up?",
+            "img": "",
+            "answers": [{
+                "answer": "Yes",
+                "img": ""
+            }, {
+                "answer": "No",
+                "img": ""
+            }, {
+                "answer": "What's Two-Step Authentication?",
+                "img": ""
+            }]
+        }],
+        "quiz_results": [{
+            "title": "Disturbing",
+            "desc": "It's only a matter of time until you'll get hacked. Please refer to <a href=\"https:\/\/yoast.com\/wordpress-security\/\" target=\"_blank\">this guide<\/a> to get your WP security in order.",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/Darth.Vader_.I.Find_.Your_.Lack_.Of_.Cyber_.Security.Disturbing.MEME_1.jpg",
+            "min": "0",
+            "max": "1"
+        }, {
+            "title": "So-so",
+            "desc": "There's a good chance you'll get hacked. Please refer to <a href=\"https:\/\/yoast.com\/wordpress-security\/\" target=\"_blank\">this guide<\/a> to get your WP security in order.",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/same-pw.jpg",
+            "min": "2",
+            "max": "3"
+        }, {
+            "title": "Good",
+            "desc": "You've got most of your bases covered, but there's still room for improvement. Security is important, so make sure to get all your ducks in a row.",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/secure-all-the-things.jpeg",
+            "min": "4",
+            "max": "5"
+        }, {
+            "title": "Perfect",
+            "desc": "Great job. Your site is very secure.",
+            "img": "https:\/\/fatcatapps.com\/wp-content\/uploads\/success-kid-a-caller-asked-for-my-password.jpg",
+            "min": "6",
+            "max": "6"
+        }],
+        "quiz_settings": {
+            "quiz_type": "mc",
+            "hide_answers": "end",
+            "shuffle_questions": "",
+            "restart_button": "",
+            "show_sharing": "on",
+            "show_facebook": "on",
+            "show_twitter": "on",
+            "show_pinterest": "on",
+            "show_email": "on"
+        },
+        "wrong_string": "Feil!",
+        "correct_string": "Riktig!",
+        "your_answer_string": "Ditt svar:",
+        "correct_answer_string": "Riktig svar:",
+        "optin_settings": {
+            "capture_emails": "",
+            "show_name": "",
+            "skip_optin": "on",
+            "headline_text": "Skriv inn din epost for å se ditt resultat",
+            "button_text": "Vis mitt resultat",
+            "provider": "zapier",
+            "api_key": "",
+            "single_optin": "",
+            "mailing_list": "",
+            "mailchimp_groups": "",
+            "zapier_url": "",
+            "getresponse_list": "",
+            "getresponse_tags": "",
+            "getresponse_key": "",
+            "aweber_key": "",
+            "aweber_list": "",
+            "aweber_tags": ""
+        },
+        "nonce": "",
+        "ajaxurl": "http://server.wazalo.com:3000",
+        "default_img": ""
+    };
+</script>
+<script type="text/javascript" src="quiz.js"></script>
+<script type="text/javascript" src="tooltipster.bundle.min.js"></script>
+</body>
+</html>
