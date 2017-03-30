@@ -65,8 +65,7 @@ jQuery(document)
 		}
 
 		function get_quiz_id(e) {
-			var i = $(e)
-				.attr("id");
+			var i = $(e).attr("id");
 			return i ? i.replace(/\D+/g, "") : !1
 		}
 		
@@ -245,12 +244,14 @@ jQuery(document)
 					.html(c)
 			}
 			return $(e.selector)
+				// add waz_qc_score_href to product image
 				.find(".waz_qc_score_title")
 				.html(i.title), $(e.selector)
 				.find(".waz_qc_score_img")
 				.attr("src", i.img), $(e.selector)
 				.find(".waz_qc_score_desc")
-				.html(i.desc), i.hasOwnProperty("id") ? add_result(e.ajaxurl, e.nonce, e.quiz_id, i.id) : add_result(e.ajaxurl, e.nonce, e.quiz_id, e.score), "pt" == e.quiz_settings.quiz_type ? i.title : i.title ? e.score + "/" + e.questionCount + ": " + i.title : e.score + "/" + e.questionCount
+				.html(i.desc), i.hasOwnProperty("id") ? add_result(e.ajaxurl, e.nonce, e.quiz_id, i.id) : add_result(e.ajaxurl, e.nonce, e.quiz_id, e.score), 
+				"pt" == e.quiz_settings.quiz_type ? i.title : i.title ? e.score + "/" + e.questionCount + ": " + i.title : e.score + "/" + e.questionCount
 		}
 
 		function show_responses(e) {
@@ -473,52 +474,37 @@ jQuery(document)
 		}
 
 		function show_sharing(e, result) {
-			$(e.selector)
-				.find(".waz_qc_social_share")
-				.show("fast");
-			var s = $(e.selector)
-				.find(".waz_qc_score_img")
-				.attr("src");
-			"" === s && (s = $(e.selector)
-				.find(".waz_qc_quiz_description_img")
-				.attr("src")), "" === s && (s = default_img);
-			var t = $(e.selector)
-				.find("#waz_qc_share_link_facebook");
-			1 == t.length && (encode_share_link(t, result), t.prop("href", t.prop("href") + "&picture=" + s));
-			var n = $(e.selector)
-				.find("#waz_qc_share_link_twitter");
-			1 == n.length && encode_share_link(n, result);
-			var c = $(e.selector)
-				.find("#waz_qc_share_link_email");
-			1 == c.length && encode_share_link(c, result);
-			var r = $(e.selector)
-				.find("#waz_qc_share_link_pinterest");
-			1 == r.length && (encode_share_link(r, result), r.prop("href", r.prop("href") + "&media=" + s)), $(e.selector)
-				.find(".waz_qc_share_link")
+			$(e.selector).find(".waz_qc_social_share").show("fast");
+			
+			var img = $(e.selector).find(".waz_qc_score_img").attr("src");
+			"" === img && (img = $(e.selector).find(".waz_qc_quiz_description_img").attr("src")), "" === img && (img = default_img);
+			
+			var facebook = $(e.selector).find("#waz_qc_share_link_facebook");
+			1 == facebook.length && (encode_share_link(facebook, result), facebook.prop("href", facebook.prop("href") + "&picture=" + img));
+			
+			var twitter = $(e.selector).find("#waz_qc_share_link_twitter");
+			1 == twitter.length && encode_share_link(twitter, result);
+			
+			var email = $(e.selector).find("#waz_qc_share_link_email");
+			1 == email.length && encode_share_link(email, result);
+			
+			var pinterest = $(e.selector).find("#waz_qc_share_link_pinterest");
+			1 == pinterest.length && (encode_share_link(pinterest, result), pinterest.prop("href", pinterest.prop("href") + "&media=" + img)), 
+				
+			$(e.selector).find(".waz_qc_share_link")
 				.click(function(result) {
 					result.preventDefault();
-					var s = $(this)
-						.prop("href");
-					window.open(s, "_blank", "resizable=yes,scrollbars=yes,titlebar=yes, width=560, height=443, top=100, left=50"), add_activity(e.ajaxurl, e.nonce, e.quiz_id, "shares")
+					var url = $(this).prop("href");
+					window.open(url, "_blank", "resizable=yes,scrollbars=yes,titlebar=yes, width=560, height=443, top=100, left=50"), add_activity(e.ajaxurl, e.nonce, e.quiz_id, "shares")
 				})
 		}
 
-		function encode_share_link(e, i) {
-			var s = encodeURIComponent(e.data("sharestring")
-					.replace("{{MY_QUIZ_RESULT}}", i)),
+		function encode_share_link(e, result) {
+			var s = encodeURIComponent(e.data("sharestring").replace("{{MY_QUIZ_RESULT}}", result)),
 				t = e.prop("href");
 			e.prop("href", t + s)
 		}
-
-		function shuffleArray(e) {
-			for (var i = e.length - 1; i > 0; i--) {
-				var s = Math.floor(Math.random() * (i + 1)),
-					t = e[i];
-				e[i] = e[s], e[s] = t
-			}
-			return e
-		}
-
+		
 		function addQuizImg(e) {
 			return e && "" !== e && "string" == typeof e ? "<img class='waz_qc_quiz_answer_img' src='" + e + "'>" : ""
 		}
@@ -532,19 +518,45 @@ jQuery(document)
 					scrollTop: i
 				}, 300)
 		}
-
-		function debounce(e, i, s) {
-			var t;
+		
+		/**
+		 * Java Script Debounce Method
+		 * @see https://davidwalsh.name/javascript-debounce-function
+		 * @see https://john-dugan.com/javascript-debounce/
+		 */
+		// Returns a function, that, as long as it continues to be invoked, will not
+		// be triggered. The function will be called after it stops being called for
+		// N milliseconds. If `immediate` is passed, trigger the function on the
+		// leading edge, instead of the trailing.
+		function debounce(func, wait, immediate) {
+			var timeout;
 			return function() {
-				var n = this,
-					c = arguments,
-					r = function() {
-						t = null, s || e.apply(n, c)
-					},
-					a = s && !t;
-				clearTimeout(t), t = setTimeout(r, i), a && e.apply(n, c)
+				var context = this, args = arguments;
+				var later = function() {
+					timeout = null;
+					if (!immediate) func.apply(context, args);
+				};
+				var callNow = immediate && !timeout;
+				clearTimeout(timeout);
+				timeout = setTimeout(later, wait);
+				if (callNow) func.apply(context, args);
+			};
+		};
+		
+		/**
+		 * Shuffling the contents of an array.
+		 * Use something that Fisher-Yates devised and Don Knuth popularized.
+		 * @see https://www.kirupa.com/html5/shuffling_array_js.htm
+		 */
+		function shuffleArray(array) {
+			for (var i = array.length - 1; i > 0; i--) {
+				var j = Math.floor(Math.random() * (i + 1));
+				var temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
 			}
-		}
+			return array;
+		}		
 		
 		var usingIE = detectIE(),
 			scoreString = $(".waz_qc_score_text")

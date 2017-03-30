@@ -1,0 +1,31 @@
+{
+  "name": "build_wazalo_quiz_client",
+  "version": "1.0.0",
+  "description": "Buildscript for Wazalo Quiz Java Script Client",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp-clean-css": "^3.0.4",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perivar/WazaloQuizClient.git"
+  },
+  "keywords": [
+    "quiz"
+  ],
+  "author": "Per Ivar Nerseth <perivar@nerseth.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perivar/WazaloQuizClient/issues"
+  },
+  "homepage": "https://github.com/perivar/WazaloQuizClient#readme"
+}

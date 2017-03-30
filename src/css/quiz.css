@@ -292,6 +292,14 @@ div.waz_qc_quiz button.waz_qc_skip_email_button {
 	line-height: 2.8rem;
 	padding: 0 1.5rem;
 }
+div.waz_qc_quiz button.waz_qc_restart_button {
+	background-color: #aaa!important;
+	border: 0.1rem solid #436F95;
+	font-size: .8rem;
+	height: 2.8rem;
+	line-height: 2.8rem;
+	padding: 0 1.5rem;
+}
 div.waz_qc_quiz input.waz_qc_optin_input {
 	background-color: #fff;
 	border: 1px solid #ccc;
