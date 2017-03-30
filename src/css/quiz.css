@@ -60,9 +60,6 @@ div.waz_qc_quiz span.waz_qc_answer_span {
 	margin-left: 35px;
 	text-indent: -35px
 }
-div.waz_qc_quiz button.waz_qc_button {
-	margin-top: 20px;
-}
 .waz_qc_next_question {
 	background-color: transparent;
 	color: #000;
@@ -120,7 +117,6 @@ h3.waz_qc_score_title {
 }
 .waz_qc_score_desc {
 	font-size: 16px;
-	margin: 0 0 30px;
 	color: #151515
 }
 .waz_qc_quiz_footer {
@@ -274,6 +270,9 @@ div.waz_qc_quiz div.wrong-answer {
 div.waz_qc_quiz h3.waz_qc_email_headline {
 	font-size: 26px;
 	font-weight: 400
+}
+div.waz_qc_quiz button.waz_qc_button {
+	margin-top: 1rem;
 }
 div.waz_qc_quiz button.waz_qc_button.waz_qc_submit_email_button {
 	width: 100%

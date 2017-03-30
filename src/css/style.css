@@ -1,6 +1,7 @@
 body {
     font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+	line-height: 1.5;
     background-color: #fff;
     -webkit-font-smoothing: antialiased
 }
@@ -128,3 +129,24 @@ label > .label-body {
   display: inline-block;
   margin-left: .5rem;
   font-weight: normal; }
+  
+  
+/*
+ * disable auto-zoom on iphone input field focus 
+ * http://www.456bereastreet.com/archive/201212/ios_webkit_browsers_and_auto-zooming_form_controls/
+*/
+input[type='text']:focus,
+input[type='number']:focus,
+textarea:focus {
+	font-size: 16px;
+}
+
+/* disable auto-zoom on iphone input field focus */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+	select:focus,
+	textarea:focus,
+	input:focus {
+		font-size: 16px;
+	}
+}
