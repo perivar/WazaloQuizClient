@@ -62,12 +62,6 @@ div.waz_qc_quiz span.waz_qc_answer_span {
 }
 div.waz_qc_quiz button.waz_qc_button {
 	margin-top: 20px;
-	background-color: #5F9DD3;
-	border: 0.1rem solid #436F95;
-}
-div.waz_qc_quiz button:hover {
-	background-color: #436F95;
-	border: 0.1rem solid #333;
 }
 .waz_qc_next_question {
 	background-color: transparent;
@@ -285,31 +279,10 @@ div.waz_qc_quiz button.waz_qc_button.waz_qc_submit_email_button {
 	width: 100%
 }
 div.waz_qc_quiz button.waz_qc_skip_email_button {
-	background-color: #aaa!important;
-	border: 0.1rem solid #436F95;
-	font-size: .8rem;
-	height: 2.8rem;
-	line-height: 2.8rem;
-	padding: 0 1.5rem;
 }
 div.waz_qc_quiz button.waz_qc_restart_button {
-	background-color: #aaa!important;
-	border: 0.1rem solid #436F95;
-	font-size: .8rem;
-	height: 2.8rem;
-	line-height: 2.8rem;
-	padding: 0 1.5rem;
 }
 div.waz_qc_quiz input.waz_qc_optin_input {
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	height: 37px;
-	-webkit-transition: All .5s ease-in-out;
-	-moz-transition: All .5s ease-in-out;
-	-o-transition: All .5s ease-in-out;
-	-ms-transition: All .5s ease-in-out;
-	transition: All .5s ease-in-out
 }
 @keyframes pulse {
 	from {
@@ -363,7 +336,6 @@ div.waz_qc_quiz span.waz_qc_mobile_check {
 	}
 	div.waz_qc_quiz button.waz_qc_button {
 		width: 80%;
-		font-size: 16px
 	}
 	div.waz_qc_quiz div.waz_qc_answer_div.waz-qc-threeup img.waz_qc_quiz_answer_img, div.waz_qc_quiz div.waz_qc_answer_div.waz-qc-twoup img.waz_qc_quiz_answer_img {
 		max-height: 110px
