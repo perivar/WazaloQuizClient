@@ -1,3 +1,39 @@
+
+// config settings
+// Set the border radius for the buttons
+$border-radius: 4px !default;
+$main-font: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$color-main: #333333 !default;
+$color-main-bg: #ffffff !default;
+
+$color-blackish: #151515 !default;
+$color-black: #000000 !default;
+$color-white: #ffffff !default;
+$color-dark-blue: #436F95 !default;
+$color-light-blue: #5F9DD3 !default;
+$color-tile-bg: #dbdbdb !default;
+$color-tile-hover: #5F9DD3 !default;
+$color-correct-bg: #abdc8c !default;
+$color-wrong-bg: #F1BDBD !default;
+
+$color-input-border-focus: #33C3F0 !default;
+$color-input-border: #D1D1D1 !default;
+
+$color-email: #0a88ff !default; // #2a91fb
+$color-facebook: #306199 !default; // #386497
+$color-twitter: #26c4f1 !default; // #5bc3ee
+$color-pinterest: #b81621 !default;
+$color-instagram: #125688 !default;
+$color-whatsapp: #43d854 !default;
+
+body {
+    font-family: $main-font;
+    color: $color-main;
+	line-height: 1.5;
+    background-color: $color-main-bg;
+    -webkit-font-smoothing: antialiased;
+}
+
 div.waz_qc_quiz img[src=''] {
 	display: none
 }
@@ -7,7 +43,7 @@ div.waz_qc_quiz {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	color: #151515;
+	color: $color-blackish;
 	padding: 30px 50px;
 }
 
@@ -16,7 +52,7 @@ div.waz_qc_quiz {
 }
 
 h2.waz_qc_quiz_title {
-	color: #151515;
+	color: $color-blackish;
 	margin: 0 0 20px;
 }
 
@@ -48,7 +84,7 @@ img.waz_qc_quiz_question_img {
 #waz_qc_question {
 	font-size: 20px;
 	margin-bottom: 15px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 #waz_qc_question_back {
@@ -67,7 +103,7 @@ div.waz_qc_quiz span.waz_qc_answer_span {
 	padding: 0;
 	margin: 0;
 	font-size: 16px;
-	color: #151515;
+	color: $color-blackish;
 	margin-left: 35px;
 	vertical-align: bottom;
 	text-indent: -35px;
@@ -75,15 +111,15 @@ div.waz_qc_quiz span.waz_qc_answer_span {
 
 .waz_qc_next_question {
 	background-color: transparent;
-	color: #000;
+	color: $color-black;
 	width: 140px;
-	border-radius: 2px;
-	border: solid 2px #151515;
+	border-radius: $border-radius;
+	border: solid 2px $color-blackish;
 }
 
 .waz_qc_next_question:hover {
-	background-color: #000;
-	color: #fff;
+	background-color: $color-black;
+	color: $color-white;
 }
 
 div.waz_qc_quiz div.waz_qc_answer_div {
@@ -91,13 +127,13 @@ div.waz_qc_quiz div.waz_qc_answer_div {
 	display: inline-block;
 	margin-bottom: 15px;
 	width: 100%;
-	border-radius: 2px;
-	background-color: #dbdbdb;
+	border-radius: $border-radius;
+	background-color: $color-tile-bg;
 	text-align: left;
 	text-transform: none;
 	font-weight: 400;
 	cursor: pointer;
-	color: #151515;
+	color: $color-blackish;
 	padding: 10px;
 }
 
@@ -118,19 +154,19 @@ div.waz_qc_quiz div.waz_qc_answer_div.waz-qc-threeup {
 }
 
 div.waz_qc_quiz div.waz_qc_answer_div:hover {
-	background-color: #5F9DD3;
+	background-color: $color-tile-hover;
 }
 
 .waz_qc_score_text {
 	font-size: 14px;
 	margin: 30px 0 10px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 h3.waz_qc_score_title {
 	font-size: 26px;
 	margin: 0 0 20px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 .waz_qc_score_img {
@@ -140,25 +176,25 @@ h3.waz_qc_score_title {
 
 .waz_qc_score_desc {
 	font-size: 16px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 .waz_qc_quiz_footer {
 	margin-top: 20px;
 	font-size: 16px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 .waz_qc_your_answers_text {
 	font-weight: 700;
 	font-size: 16px;
 	margin: 0 0 15px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 div.waz_qc_quiz div.waz_qc_question_response_item {
 	margin: 0 0 15px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 div.waz_qc_quiz h3.waz_qc_question_response_question {
@@ -166,20 +202,20 @@ div.waz_qc_quiz h3.waz_qc_question_response_question {
 	font-weight: 700;
 	margin: 0 0 10px;
 	padding-top: 15px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 div.waz_qc_quiz p.waz_qc_question_response_response {
 	font-size: 16px;
 	margin: 0 0 10px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 div.waz_qc_quiz p.waz_qc_question_response_correct_answer {
 	font-size: 16px;
 	margin: 0;
 	padding-bottom: 15px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 .waz_qc_bold {
@@ -188,18 +224,18 @@ div.waz_qc_quiz p.waz_qc_question_response_correct_answer {
 
 #waz_qc_question_count {
 	font-size: 16px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 #waz_qc_question_right_or_wrong {
 	font-size: 20px;
 	margin: 20px 0;
-	color: #151515;
+	color: $color-blackish;
 }
 
 #waz_qc_question_back {
 	font-size: 18px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 .waz-qc-flipper div {
@@ -210,15 +246,15 @@ div.waz_qc_quiz p.waz_qc_back_response {
 	font-size: 16px;
 	font-weight: 700;
 	margin-bottom: 10px;
-	color: #151515;
+	color: $color-blackish;
 }
 
 div.waz_qc_quiz div.correct-answer {
-	background-color: #abdc8c;
+	background-color: $color-correct-bg;
 }
 
 div.waz_qc_quiz div.wrong-answer {
-	background-color: #F1BDBD;
+	background-color: $color-wrong-bg;
 }
 
 .flip-container {
@@ -282,16 +318,16 @@ div.waz_qc_quiz div.wrong-answer {
 	display: inline-block;
 	width: 120px;
 	padding: 8px 10px;
-	color: #fff;
+	color: $color-white;
 	text-transform: uppercase;
 	font-family: sans-serif;
 	font-size: 10pt;
 	font-weight: 700;
-	border-radius: 2px;
+	border-radius: $border-radius;
 	text-decoration: none;
 	box-shadow: none;
 	border-bottom: none;
-	line-height: 1.43;
+	line-height: 1.5;
 }
 
 .waz_qc_social_share a.waz_qc_share_link:hover {
@@ -302,37 +338,31 @@ div.waz_qc_quiz div.wrong-answer {
 	float: left;
 	height: 18px;
 	width: 18px;
-	fill: #fff;
+	fill: $color-white;
 }
 
 #waz_qc_share_link_facebook {
-	/*background-color: #386497;*/
-	background-color: #306199;
+	background-color: $color-facebook;
 }
 
 #waz_qc_share_link_whatsapp {
-	/*background-color: #b81621;*/
-	background-color: #43d854;
+	background-color: $color-whatsapp;
 }
 
 #waz_qc_share_link_instagram {
-	/*background-color: #b81621;*/
-	background-color: #125688;
+	background-color: $color-instagram;
 }
 
 #waz_qc_share_link_twitter {
-	/*background-color: #5bc3ee;*/
-	background-color: #26c4f1;
+	background-color: $color-twitter;
 }
 
 #waz_qc_share_link_pinterest {
-	/*background-color: #b81621;*/
-	background-color: #b81621;
+	background-color: $color-pinterest;
 }
 
 #waz_qc_share_link_email {
-	/*background-color: #2a91fb;*/
-	background-color: #0a88ff;
+	background-color: $color-email;
 }
 
 div.waz_qc_quiz h3.waz_qc_email_headline {
@@ -357,42 +387,30 @@ div.waz_qc_quiz input.waz_qc_optin_input {}
 @keyframes pulse {
 	from {
 		-webkit-transform: none;
-		-moz-transform: none;
-		-o-transform: none;
-		-ms-transform: none;
 		transform: none;
 	}
 	50% {
 		-webkit-transform: scale(1.1);
-		-moz-transform: scale(1.1);
-		-o-transform: scale(1.1);
-		-ms-transform: scale(1.1);
 		transform: scale(1.1);
 	}
 	to {
 		-webkit-transform: none;
-		-moz-transform: none;
-		-o-transform: none;
-		-ms-transform: none;
 		transform: none;
 	}
 }
 
 div.waz_qc_quiz input.waz_qc_optin_input.waz_qc_invalid {
-	border: 1px solid #F1BDBD;
+	border: 1px solid $color-wrong-bg;
 	-webkit-animation: pulse .5s;
-	-moz-animation: pulse .5s;
-	-o-animation: pulse .5s;
-	-ms-animation: pulse .5s;
 	animation: pulse .5s;
 }
 
 .tooltipster-sidetip.tooltipster-borderless.tooltipster-quiz-cat .tooltipster-box {
-	background-color: #436F95;
+	background-color: $color-dark-blue;
 }
 
 .tooltipster-arrow-border {
-	border-top-color: #436F95!important;
+	border-top-color: $color-dark-blue!important;
 }
 
 div.waz_qc_quiz span.waz_qc_mobile_check {
@@ -425,9 +443,177 @@ div.waz_qc_quiz span.waz_qc_mobile_check {
 		margin-right: 3px;
 		vertical-align: bottom;
 		-webkit-transform: scale(0.8);
-		-moz-transform: scale(0.8);
-		-o-transform: scale(0.8);
-		-ms-transform: scale(0.8);
 		transform: scale(0.8);
 	}
+}
+
+
+/** Taken from Skeleton: 
+ * https://github.com/dhg/Skeleton/blob/gh-pages/dist/css/skeleton.css 
+ */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	display: inline-block;
+	height: 38px;
+	padding: 0 30px;
+	color: #555;
+	text-align: center;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 38px;
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: nowrap;
+	background-color: transparent;
+	border-radius: $border-radius;
+	border: 1px solid #bbb;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+	color: #333;
+	border-color: #888;
+	outline: 0;
+}
+
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+	color: $color-white;
+	background-color: $color-dark-blue;
+	border-color: $color-dark-blue;
+}
+
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+	color: $color-white;
+	background-color: $color-light-blue;
+	border-color: $color-light-blue;
+}
+
+button,
+.button {
+	margin-bottom: 1rem;
+}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+	height: 38px;
+	padding: 6px 10px;
+	/* The 6px vertically centers text on FF, ignored by Webkit */
+	background-color: $color-white;
+	border: 1px solid $color-input-border;
+	border-radius: $border-radius;
+	box-shadow: none;
+	box-sizing: border-box;
+}
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+textarea {
+	min-height: 65px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+	border: 1px solid $color-input-border-focus;
+	outline: 0;
+}
+
+label,
+legend {
+	display: block;
+	margin-bottom: .5rem;
+	font-weight: 600;
+}
+
+fieldset {
+	padding: 0;
+	border-width: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	display: inline;
+}
+
+label>.label-body {
+	display: inline-block;
+	margin-left: .5rem;
+	font-weight: normal;
+}
+
+/*
+ * disable auto-zoom on iphone input field focus 
+ * http://www.456bereastreet.com/archive/201212/ios_webkit_browsers_and_auto-zooming_form_controls/
+*/
+input[type='text']:focus,
+input[type='number']:focus,
+textarea:focus {
+	font-size: 16px;
+}
+
+/* disable auto-zoom on iphone input field focus */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	select:focus,
+	textarea:focus,
+	input:focus {
+		font-size: 16px;
+	}
+}
+
+input {
+	font-size: 16px;
 }
