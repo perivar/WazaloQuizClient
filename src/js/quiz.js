@@ -54,303 +54,321 @@ jQuery(document)
 			})
 		}
 
-		function lazyLoadResults(e) {
-			e.hasOwnProperty("quiz_results") && $.each(e.quiz_results, function(index) {
-				e.quiz_results[index].hasOwnProperty("img") && lazyLoadImage(e.quiz_results[index].img)
+		function lazyLoadResults(quiz) {
+			quiz.hasOwnProperty("quiz_results") && $.each(quiz.quiz_results, function(index) {
+				quiz.quiz_results[index].hasOwnProperty("img") && lazyLoadImage(quiz.quiz_results[index].img)
 			})
 		}
 
-		function lazyLoadImage(e) {
-			if ("" !== e && void 0 !== e && "string" == typeof e) {
+		function lazyLoadImage(img_url) {
+			if ("" !== img_url && void 0 !== img_url && "string" == typeof img_url) {
 				var img = new Image;
-				img.src = e
+				img.src = img_url
 			}
 		}
 
-		function lazyLoadQuestion(e) {
-			e.hasOwnProperty("img") && lazyLoadImage(e.img), e.hasOwnProperty("answers") && $.each(e.answers, function(index) {
-				e.answers[index].hasOwnProperty("img") && lazyLoadImage(e.answers[index].img)
+		function lazyLoadQuestion(question) {
+			question.hasOwnProperty("img") && lazyLoadImage(question.img), question.hasOwnProperty("answers") && $.each(question.answers, function(index) {
+				question.answers[index].hasOwnProperty("img") && lazyLoadImage(question.answers[index].img)
 			})
 		}
 
-		function get_quiz_id(e) {
-			var i = $(e).attr("id");
+		function get_quiz_id(quiz_div) {
+			var i = $(quiz_div).attr("id");
 			return i ? i.replace(/\D+/g, "") : !1
 		}
 		
 		// quiz_type is either "pt" - personality test or "mc" - normal quiz
-		function showQuestion(e) {
-			if (e.currentQuestion < e.questionCount) {
-				$(e.selector)
+		function showQuestion(quiz) {
+			if (quiz.currentQuestion < quiz.questionCount) {
+				$(quiz.selector)
 					.find(".waz_qc_question_count")
-					.html(e.currentQuestion + 1 + "/" + e.questionCount);
+					.html(quiz.currentQuestion + 1 + "/" + quiz.questionCount);
 				
-				var quest = e.questions[e.currentQuestion].question;
-				$(e.selector)
+				var quest = quiz.questions[quiz.currentQuestion].question;
+				$(quiz.selector)
 					.find("#waz_qc_question")
-					.html(quest), $(e.selector)
+					.html(quest), $(quiz.selector)
 					.find("#waz_qc_question_back")
 					.html(quest);
 					
-				var quest_img = e.questions[e.currentQuestion].img;
-				$(e.selector)
+				var quest_img = quiz.questions[quiz.currentQuestion].img;
+				$(quiz.selector)
 					.find("#waz_qc_answer_container")
 					.find(".waz_qc_quiz_question_img")
-					.attr("src", quest_img), $(e.selector)
+					.attr("src", quest_img), $(quiz.selector)
 					.find("#waz_qc_back_container")
 					.find(".waz_qc_quiz_question_img")
-					.attr("src", quest_img), $(e.selector)
+					.attr("src", quest_img), $(quiz.selector)
 					.find("#waz_qc_answer_container")
-					.data("id", e.questions[e.currentQuestion].id);
+					.data("id", quiz.questions[quiz.currentQuestion].id);
 				
 				var answer;
-				"mc" == e.quiz_settings.quiz_type && (answer = e.questions[e.currentQuestion].answers[0]);
+				"mc" == quiz.quiz_settings.quiz_type && (answer = quiz.questions[quiz.currentQuestion].answers[0]);
 				
-				var shuffled_questions = shuffleArray(e.questions[e.currentQuestion].answers);
-				e.currentQuestion + 1 < e.questionCount ? lazyLoadQuestion(e.questions[e.currentQuestion + 1]) : lazyLoadResults(e), $(e.selector)
+				var shuffled_questions = shuffleArray(quiz.questions[quiz.currentQuestion].answers);
+				quiz.currentQuestion + 1 < quiz.questionCount ? lazyLoadQuestion(quiz.questions[quiz.currentQuestion + 1]) : lazyLoadResults(quiz), $(quiz.selector)
 					.find(".waz_qc_answer_div")
 					.hide();
 					
-				for (var c = 0; c < shuffled_questions.length; c++)
-					("" !== shuffled_questions[c].img || "" !== shuffled_questions[c].answer) && ("mc" == e.quiz_settings.quiz_type && shuffled_questions[c].answer == answer.answer && shuffled_questions[c].img == answer.img && (e.currentAnswer = $(e.selector)
+				for (var question_index = 0; question_index < shuffled_questions.length; question_index++)
+					("" !== shuffled_questions[question_index].img || "" !== shuffled_questions[question_index].answer) && ("mc" == quiz.quiz_settings.quiz_type && shuffled_questions[question_index].answer == answer.answer && shuffled_questions[question_index].img == answer.img && (quiz.currentAnswer = $(quiz.selector)
 						.find(".waz_qc_answer_div")
-						.eq(c)
-						.attr("data-question")), "pt" == e.quiz_settings.quiz_type && $(e.selector)
+						.eq(question_index)
+						.attr("data-question")), "pt" == quiz.quiz_settings.quiz_type && $(quiz.selector)
 					.find(".waz_qc_answer_div")
-					.eq(c)
-					.data("results", shuffled_questions[c].results), $(e.selector)
+					.eq(question_index)
+					.data("results", shuffled_questions[question_index].results), $(quiz.selector)
 					.find(".waz_qc_answer_div")
-					.eq(c)
+					.eq(question_index)
 					.find(".waz_qc_quiz_answer_img")
-					.attr("src", shuffled_questions[c].img), $(e.selector)
+					.attr("src", shuffled_questions[question_index].img), $(quiz.selector)
 					.find(".waz_qc_answer_div")
-					.eq(c)
+					.eq(question_index)
 					.find(".waz_qc_answer_span")
-					.html(svg_square + shuffled_questions[c].answer), $(e.selector)
+					.html(svg_square + shuffled_questions[question_index].answer), $(quiz.selector)
 					.find(".waz_qc_answer_div")
-					.eq(c)
-					.data("id", shuffled_questions[c].id), $(e.selector)
+					.eq(question_index)
+					.data("id", shuffled_questions[question_index].id), $(quiz.selector)
 					.find(".waz_qc_answer_div")
-					.eq(c)
+					.eq(question_index)
 					.show());
 					
-				$(e.selector)
+				$(quiz.selector)
 					.find("#waz_qc_answer_container")
 					.waitForImages(function() {
-						maybe_add_quarter_class(e.selector), scale_flip_box_question(e.selector)
-					}), e.currentQuestion = e.currentQuestion + 1
-			} else endTest(e)
+						maybe_add_quarter_class(quiz.selector), scale_flip_box_question(quiz.selector)
+					}), quiz.currentQuestion = quiz.currentQuestion + 1
+			} else endTest(quiz)
 		}
 
-		function maxHeightOfElementSet(e) {
+		/** 
+		 * Return the maximum outer height in the element set
+		 */
+		function maxHeightOfElementSet(element_set) {
 			var i = 0;
-			return $.each(e, function(s) {
-				e.eq(s)
-					.outerHeight() > i && (i = e.eq(s)
-						.outerHeight())
-			}), i
+			return $.each(element_set, function(element) {
+					element_set.eq(element).outerHeight() > i 
+					&& (i = element_set.eq(element).outerHeight())
+				}), i
 		}
 
-		function scale_flip_box_question(e) {
-			var i = $(e)
+		function scale_flip_box_question(quiz_div) {
+			var total_question_heigh = $(quiz_div)
 				.find("#waz_qc_question")
 				.outerHeight(!0);
-			i += $(e)
+			total_question_heigh += $(quiz_div)
 				.find(".waz_qc_quiz_question_img")
 				.outerHeight(!0);
-			var s = 0,
-				t = 0;
-			$(e)
+				
+			var num_questions = 0,
+				max_height = 0;
+				
+			$(quiz_div)
 				.find(".waz_qc_answer_div:visible")
 				.eq(0)
-				.hasClass("waz-qc-twoup") ? (t = maxHeightOfElementSet($(e)
-						.find(".waz_qc_answer_div:visible")), s = $(e)
-					.find(".waz_qc_answer_div:visible")
-					.length, s = Math.floor(s / 2) + s % 2, i += t * s) : $(e)
+				.hasClass("waz-qc-twoup") ? 
+					(max_height = maxHeightOfElementSet($(quiz_div).find(".waz_qc_answer_div:visible")), 
+						num_questions = $(quiz_div).find(".waz_qc_answer_div:visible").length, 
+						num_questions = Math.floor(num_questions / 2) + num_questions % 2, 
+						total_question_heigh += max_height * num_questions) 
+					: $(quiz_div)
 				.find(".waz_qc_answer_div:visible")
 				.eq(0)
-				.hasClass("waz-qc-threeup") ? (t = maxHeightOfElementSet($(e)
-						.find(".waz_qc_answer_div:visible")), s = $(e)
-					.find(".waz_qc_answer_div:visible")
-					.length, s /= 3, i += t * s) : $(e)
+				.hasClass("waz-qc-threeup") ? 
+					(max_height = maxHeightOfElementSet($(quiz_div).find(".waz_qc_answer_div:visible")), 
+					num_questions = $(quiz_div).find(".waz_qc_answer_div:visible")
+					.length, num_questions /= 3, total_question_heigh += max_height * num_questions) 
+					: $(quiz_div)
 				.find(".waz_qc_answer_div:visible")
 				.each(function() {
-					i += $(this)
-						.outerHeight(!0)
-				}), 200 > i && (i = 200), $(e)
+					total_question_heigh += $(this).outerHeight(!0)
+				}), 200 > total_question_heigh && (total_question_heigh = 200), $(quiz_div)
 				.find(".waz_qc_quiz_div, #waz_qc_answer_container, #waz_qc_back_container")
-				.outerHeight(i)
+				.outerHeight(total_question_heigh)
 		}
 
-		function scale_flip_box_back(e) {
-			var i = 0;
-			$(e)
+		function scale_flip_box_back(quiz_div) {
+			var max_height = 0;
+			$(quiz_div)
 				.find("#waz_qc_back_container")
 				.children()
 				.each(function() {
 					$(this)
-						.is(":visible") && (i += $(this)
-							.outerHeight(!0))
-				}), i += 35, 400 > i && (i = 400), $(e)
+						.is(":visible") && (max_height += $(this).outerHeight(!0))
+				}), 
+				max_height += 35, 
+				400 > max_height && (max_height = 400), 
+				$(quiz_div)
 				.find(".waz_qc_quiz_div, #waz_qc_answer_container, #waz_qc_back_container")
-				.height(i)
+				.height(max_height)
 		}
 
-		function maybe_add_quarter_class(e) {
-			$(e)
+		function maybe_add_quarter_class(quiz_div) {
+			$(quiz_div)
 				.find(".waz_qc_answer_div")
-				.height("auto"), $(e)
+				.height("auto"), $(quiz_div)
 				.find(".waz_qc_answer_div")
-				.removeClass("waz-qc-twoup waz-qc-threeup"), $(e)
+				.removeClass("waz-qc-twoup waz-qc-threeup"), $(quiz_div)
 				.find(".waz_qc_quiz_answer_img")
 				.css("marginBottom", 0);
+
 			var i = !0,
 				s = 0;
-			if ($(e)
+			if ($(quiz_div)
 				.find(".waz_qc_answer_div:visible")
 				.each(function() {
 					return s++, "" !== $(this)
 						.find(".waz_qc_quiz_answer_img")
 						.attr("src") && i ? void 0 : (i = !1, !1)
 				}), i) {
-				var t = "waz-qc-twoup";
-				s % 3 === 0 && 0 === $(e)
+					
+				var class_name = "waz-qc-twoup";
+				s % 3 === 0 && 0 === $(quiz_div)
 					.find(".waz_qc_mobile_check:visible")
-					.length && (t = "waz-qc-threeup"), $(e)
+					.length && (class_name = "waz-qc-threeup"), $(quiz_div)
 					.find(".waz_qc_answer_div")
-					.addClass(t);
-				var n = maxHeightOfElementSet($(e)
+					.addClass(class_name);
+					
+				var n = maxHeightOfElementSet($(quiz_div)
 					.find(".waz_qc_quiz_answer_img:visible"));
-				n > 200 && (n = 200), $(e)
+				n > 200 && (n = 200), $(quiz_div)
 					.find(".waz_qc_quiz_answer_img:visible")
 					.each(function() {
 						$(this)
 							.css("marginBottom", n - $(this)
 								.height() + 10 + "px")
 					});
-				var c = maxHeightOfElementSet($(e)
+					
+				var c = maxHeightOfElementSet($(quiz_div)
 					.find(".waz_qc_answer_div:visible"));
-				return $(e)
+				return $(quiz_div)
 					.find(".waz_qc_answer_div:visible")
 					.outerHeight(c), !0
 			}
 			return !1
 		}
 
-		function set_result(e) {
-			var i = "undefined";
-			if ("pt" == e.quiz_settings.quiz_type) {
+		function set_result(quiz) {
+			var result = "undefined";	
+			if ("pt" == quiz.quiz_settings.quiz_type) {
 				var s = -1,
 					t = [];
-				$.each(e.quiz_results, function(e, i) {
-						i.hasOwnProperty("score") && i.score > s && (s = i.score)
-					}), $.each(e.quiz_results, function(e, i) {
-						i.hasOwnProperty("score") && i.score == s && t.push(i)
-					}), 0 === t.length && (t = e.quiz_results), $(e.selector)
+				$.each(quiz.quiz_results, function(quiz, result) {
+						result.hasOwnProperty("score") && result.score > s && (s = result.score)
+					}), $.each(quiz.quiz_results, function(quiz, result) {
+						result.hasOwnProperty("score") && result.score == s && t.push(result)
+					}), 0 === t.length && (t = quiz.quiz_results), $(quiz.selector)
 					.find(".waz_qc_score_text")
-					.hide(), i = t[Math.floor(Math.random() * t.length)]
+					.hide(), result = t[Math.floor(Math.random() * t.length)]
 			} else {
 				for (var n = 0;
-					"undefined" == i;) e.quiz_results[n].min <= e.score && e.quiz_results[n].max >= e.score ? i = e.quiz_results[n] : n == e.quiz_results.length ? i = "error" : n++;
-				var c = scoreString.replace("{{SCORE_CORRECT}}", e.score);
-				c = c.replace("{{SCORE_TOTAL}}", e.questionCount), $(e.selector)
+					"undefined" == result;) quiz.quiz_results[n].min <= quiz.score && quiz.quiz_results[n].max >= quiz.score ? result = quiz.quiz_results[n] : n == quiz.quiz_results.length ? result = "error" : n++;
+				var c = scoreString.replace("{{SCORE_CORRECT}}", quiz.score);
+				c = c.replace("{{SCORE_TOTAL}}", quiz.questionCount), $(quiz.selector)
 					.find(".waz_qc_score_text")
 					.html(c)
 			}
-			return $(e.selector)
+			return $(quiz.selector)
 				// add waz_qc_score_href to product image
 				.find(".waz_qc_score_title")
-				.html(i.title), $(e.selector)
+				.html(result.title), $(quiz.selector)
 				.find(".waz_qc_score_img")
-				.attr("src", i.img), $(e.selector)
+				.attr("src", result.img), $(quiz.selector)
 				.find(".waz_qc_score_desc")
-				.html(i.desc), i.hasOwnProperty("id") ? add_result(e.ajaxurl, e.nonce, e.quiz_id, i.id) : add_result(e.ajaxurl, e.nonce, e.quiz_id, e.score), 
-				"pt" == e.quiz_settings.quiz_type ? i.title : i.title ? e.score + "/" + e.questionCount + ": " + i.title : e.score + "/" + e.questionCount
+				.html(result.desc), result.hasOwnProperty("id") ? add_result(quiz.ajaxurl, quiz.nonce, quiz.quiz_id, result.id) : add_result(quiz.ajaxurl, quiz.nonce, quiz.quiz_id, quiz.score), 
+				"pt" == quiz.quiz_settings.quiz_type ? result.title : result.title ? quiz.score + "/" + quiz.questionCount + ": " + result.title : quiz.score + "/" + quiz.questionCount
 		}
 
-		function show_responses(e) {
-			for (var i, s = 0; s < e.questions.length; s++) i = "", i += e.responses[s].isCorrect ? "<div class='waz_qc_question_response_item correct-answer'>" : "<div class='waz_qc_question_response_item wrong-answer'>", i += "<h3 class='waz_qc_question_response_question'>" + (s + 1) + ". " + e.questions[s].question + "</h3>", i += "<img class='waz_qc_quiz_question_img' src='" + e.questions[s].img + "'>", i += "<p class='waz_qc_question_response_response'><span class='waz_qc_bold'>" + e.your_answer_string + " </span>" + e.responses[s].answer + "</p>", i += "<p class='waz_qc_question_response_correct_answer'><span class='waz_qc_bold'>" + e.correct_answer_string + "</span>" + e.responses[s].correctAnswer + "</p>", i += "</div>", $(e.selector)
-				.find(".waz_qc_insert_response_above")
-				.before(i);
-			$(e.selector)
-				.find(".waz_qc_your_answer_container")
-				.show()
+		function show_responses(quiz) {
+			for (var txt, question_index = 0; question_index < quiz.questions.length; question_index++) 
+				txt = "", 
+				txt += quiz.responses[question_index].isCorrect 
+					? "<div class='waz_qc_question_response_item correct-answer'>" 
+					: "<div class='waz_qc_question_response_item wrong-answer'>", 
+				txt += "<h3 class='waz_qc_question_response_question'>" + (question_index + 1) + ". " + quiz.questions[question_index].question + "</h3>", 
+				txt += "<img class='waz_qc_quiz_question_img' src='" + quiz.questions[question_index].img + "'>", 
+				txt += "<p class='waz_qc_question_response_response'><span class='waz_qc_bold'>" + quiz.your_answer_string + " </span>" + quiz.responses[question_index].answer + "</p>", 
+				txt += "<p class='waz_qc_question_response_correct_answer'><span class='waz_qc_bold'>" + quiz.correct_answer_string + "</span>" + quiz.responses[question_index].correctAnswer + "</p>", 
+				txt += "</div>", 
+			$(quiz.selector).find(".waz_qc_insert_response_above").before(i);
+			$(quiz.selector).find(".waz_qc_your_answer_container").show()
 		}
 
-		function endTest(e) {
-			add_activity(e.ajaxurl, e.nonce, e.quiz_id, "completions"), $(e.selector)
+		function endTest(quiz) {
+			add_activity(quiz.ajaxurl, quiz.nonce, quiz.quiz_id, "completions"), $(quiz.selector)
 				.find(".waz_qc_quiz_footer")
-				.hide(), $(e.selector)
+				.hide(), $(quiz.selector)
 				.find(".waz_qc_quiz_div")
-				.hide(), "on" == e.optin_settings.capture_emails ? show_optins(e) : show_sharing_and_result_screen(e, set_result(e))
+				.hide(), "on" == quiz.optin_settings.capture_emails ? show_optins(quiz) : show_sharing_and_result_screen(quiz, set_result(quiz))
 		}
 
-		function show_optins(e) {
-			var result = set_result(e);
-			$(e.selector)
+		function show_optins(quiz) {
+			var result = set_result(quiz);
+			$(quiz.selector)
 				.find(".waz_qc_optin_input")
 				.tooltipster({
 					trigger: "custom",
 					maxWidth: 240,
 					theme: ["tooltipster-borderless", "tooltipster-quiz-cat"]
 				})
-				.tooltipster("close"), $(e.selector)
+				.tooltipster("close"), $(quiz.selector)
 				.find(".waz_qc_optin_container")
-				.show(), $(e.selector)
+				.show(), $(quiz.selector)
 				.find(".waz_qc_optin_input")
 				.first()
-				.focus(), $(e.selector)
+				.focus(), $(quiz.selector)
 				.find(".waz_qc_skip_email_button")
 				.click(function() {
-					$(e.selector)
+					$(quiz.selector)
 						.find(".waz_qc_optin_container")
-						.hide(), $(e.selector)
+						.hide(), $(quiz.selector)
 						.find(".waz_qc_optin_input")
-						.tooltipster("close"), show_sharing_and_result_screen(e, result)
-				}), $(e.selector)
+						.tooltipster("close"), show_sharing_and_result_screen(quiz, result)
+				}), $(quiz.selector)
 				.find(".waz_qc_submit_email_button")
 				.click(function() {
-					var user_email = $(e.selector).find("#waz_qc_email_input").val(),
-						user_name = $(e.selector).find("#waz_qc_name_input").val(),
+					var user_email = $(quiz.selector).find("#waz_qc_email_input").val(),
+						user_name = $(quiz.selector).find("#waz_qc_name_input").val(),
 						regexp = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/,
 						email_check = regexp.test(user_email),
-						r = "" !== user_name || 0 === $(e.selector)
+						r = "" !== user_name || 0 === $(quiz.selector)
 						.find("#waz_qc_name_input")
 						.length;
-					$(e.selector)
+					$(quiz.selector)
 						.find(".waz_qc_optin_input")
-						.removeClass("waz_qc_invalid"), e.selector.offsetWidth = e.selector.offsetWidth, email_check && r ? ($(document)
-							.unbind("keypress"), $(e.selector)
+						.removeClass("waz_qc_invalid"), quiz.selector.offsetWidth = quiz.selector.offsetWidth, email_check && r ? ($(document)
+							.unbind("keypress"), $(quiz.selector)
 							.find(".waz_qc_optin_input")
-							.tooltipster("close"), e.user = {
+							.tooltipster("close"), quiz.user = {
 								name: user_name,
 								user_email: user_email
-							}, add_to_mailing_list(e.ajaxurl, e.quiz_id, e.nonce, user_email, user_name, result), $(e.selector)
+							}, add_to_mailing_list(quiz.ajaxurl, quiz.quiz_id, quiz.nonce, user_email, user_name, result), $(quiz.selector)
 							.find(".waz_qc_optin_container")
-							.hide(), show_sharing_and_result_screen(e, result)) : (email_check ? ($(e.selector)
+							.hide(), show_sharing_and_result_screen(quiz, result)) : (email_check ? ($(quiz.selector)
 							.find("#waz_qc_email_input")
-							.tooltipster("close"), $(e.selector)
+							.tooltipster("close"), $(quiz.selector)
 							.find("#waz_qc_email_input")
-							.removeClass("waz_qc_invalid")) : ($(e.selector)
+							.removeClass("waz_qc_invalid")) : ($(quiz.selector)
 							.find("#waz_qc_email_input")
-							.tooltipster("open"), $(e.selector)
+							.tooltipster("open"), $(quiz.selector)
 							.find("#waz_qc_email_input")
-							.addClass("waz_qc_invalid")), r ? ($(e.selector)
+							.addClass("waz_qc_invalid")), r ? ($(quiz.selector)
 							.find("#waz_qc_name_input")
-							.tooltipster("close"), $(e.selector)
+							.tooltipster("close"), $(quiz.selector)
 							.find("#waz_qc_name_input")
-							.removeClass("waz_qc_invalid")) : ($(e.selector)
+							.removeClass("waz_qc_invalid")) : ($(quiz.selector)
 							.find("#waz_qc_name_input")
-							.tooltipster("open"), $(e.selector)
+							.tooltipster("open"), $(quiz.selector)
 							.find("#waz_qc_name_input")
 							.addClass("waz_qc_invalid")))
-				}), 0 === $(e.selector)
+				}), 0 === $(quiz.selector)
 				.find(".waz_qc_skip_email_button")
-				.length && 0 === $(e.selector)
+				.length && 0 === $(quiz.selector)
 				.find(".waz_qc_submit_email_button")
-				.length ? show_sharing_and_result_screen(e, result) : $(document)
+				.length ? show_sharing_and_result_screen(quiz, result) : $(document)
 				.keypress(function(result) {
-					return 13 == result.which ? ($(e.selector)
+					return 13 == result.which ? ($(quiz.selector)
 						.find(".waz_qc_submit_email_button")
 						.click(), !1) : void 0
 				})
@@ -435,24 +453,24 @@ jQuery(document)
 				})
 		}
 
-		function send_responses(e, result) {
+		function send_responses(quiz, result) {
 			var user_name = "",
 				user_email = "";
-			e.hasOwnProperty("user") && (user_name = e.user.name, user_email = e.user.email), $.ajax({
-					url: e.ajaxurl,
+			quiz.hasOwnProperty("user") && (user_name = quiz.user.name, user_email = quiz.user.email), $.ajax({
+					url: quiz.ajaxurl,
 					type: "POST",
 					data: {
 						action: "waz_qc_send_responses",
-						nonce: e.nonce,
-						quiz_id: e.quiz_id,
+						nonce: quiz.nonce,
+						quiz_id: quiz.quiz_id,
 						name: user_name,
 						email: user_email,
 						result: result,
-						responses: e.responses
+						responses: quiz.responses
 					}
 				})
-				.done(function(e) {
-					console.log(e)
+				.done(function(quiz) {
+					console.log(quiz)
 				})
 		}
 
@@ -460,25 +478,25 @@ jQuery(document)
 			location.reload()
 		}
 
-		function show_sharing_and_result_screen(e, result) {
-			send_responses(e, result), $(e.selector)
+		function show_sharing_and_result_screen(quiz, result) {
+			send_responses(quiz, result), $(quiz.selector)
 				.find(".waz_qc_score_container")
-				.show(), "on" == e.quiz_settings.restart_button && $("#waz_qc_restart_button")
+				.show(), "on" == quiz.quiz_settings.restart_button && $("#waz_qc_restart_button")
 				.click(function() {
-					restart_quiz(e), $(this)
+					restart_quiz(quiz), $(this)
 						.hide()
 				})
-				.show("fast"), "end" == e.hideAnswers && show_responses(e), "on" == e.quiz_settings.show_sharing && show_sharing(e, result)
+				.show("fast"), "end" == quiz.hideAnswers && show_responses(quiz), "on" == quiz.quiz_settings.show_sharing && show_sharing(quiz, result)
 		}
 
-		function get_correct_answer_html(e) {
+		function get_correct_answer_html(quiz) {
 			var img = "",
 				s = "";
-			return $(e.selector)
+			return $(quiz.selector)
 				.find(".waz_qc_answer_div")
 				.each(function() {
 					$(this)
-						.attr("data-question") == e.currentAnswer && (img = addQuizImg($(this)
+						.attr("data-question") == quiz.currentAnswer && (img = addQuizImg($(this)
 								.find(".waz_qc_quiz_answer_img")
 								.attr("src")), s = $(this)
 							.find(".waz_qc_answer_span")
@@ -523,12 +541,12 @@ jQuery(document)
 			link.prop("href", href + sharestring)
 		}
 		
-		function addQuizImg(e) {
-			return e && "" !== e && "string" == typeof e ? "<img class='waz_qc_quiz_answer_img' src='" + e + "'>" : ""
+		function addQuizImg(img_url) {
+			return img_url && "" !== img_url && "string" == typeof img_url ? "<img class='waz_qc_quiz_answer_img' src='" + img_url + "'>" : ""
 		}
 
-		function scrollQuizInToView(e) {
-			var i = $(e)
+		function scrollQuizInToView(quiz_div) {
+			var i = $(quiz_div)
 				.offset()
 				.top;
 			0 > i && (i = 0), $("html, body")
