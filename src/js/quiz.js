@@ -487,36 +487,40 @@ jQuery(document)
 				}), img + s
 		}
 
-		function show_sharing(e, result) {
-			$(e.selector).find(".waz_qc_social_share").show("fast");
+		function show_sharing(quiz, result) {
+			$(quiz.selector).find(".waz_qc_social_share").show("fast");
 			
-			var img = $(e.selector).find(".waz_qc_score_img").attr("src");
-			"" === img && (img = $(e.selector).find(".waz_qc_quiz_description_img").attr("src")), "" === img && (img = default_img);
+			var img = $(quiz.selector).find(".waz_qc_score_img").attr("src");
+			"" === img && (img = $(quiz.selector).find(".waz_qc_quiz_description_img").attr("src")), "" === img && (img = default_img);
 			
-			var facebook = $(e.selector).find("#waz_qc_share_link_facebook");
-			1 == facebook.length && (encode_share_link(facebook, result), facebook.prop("href", facebook.prop("href") + "&picture=" + img));
+			var facebook = $(quiz.selector).find("#waz_qc_share_link_facebook");
+			//&link=&name=The+Ultimate+Quiz&caption=Master?Try+this+Quiz&description=
+			1 == facebook.length && (encode_share_link(quiz, facebook, result), facebook.prop("href", facebook.prop("href") + "&picture=" + img));
 			
-			var twitter = $(e.selector).find("#waz_qc_share_link_twitter");
-			1 == twitter.length && encode_share_link(twitter, result);
+			var twitter = $(quiz.selector).find("#waz_qc_share_link_twitter");
+			1 == twitter.length && encode_share_link(quiz, twitter, result);
 			
-			var email = $(e.selector).find("#waz_qc_share_link_email");
-			1 == email.length && encode_share_link(email, result);
+			var email = $(quiz.selector).find("#waz_qc_share_link_email");
+			1 == email.length && encode_share_link(quiz, email, result);
 			
-			var pinterest = $(e.selector).find("#waz_qc_share_link_pinterest");
-			1 == pinterest.length && (encode_share_link(pinterest, result), pinterest.prop("href", pinterest.prop("href") + "&media=" + img)), 
+			var whatsapp = $(quiz.selector).find("#waz_qc_share_link_whatsapp");
+			1 == whatsapp.length && encode_share_link(quiz, whatsapp, result);
+			
+			var pinterest = $(quiz.selector).find("#waz_qc_share_link_pinterest");
+			1 == pinterest.length && (encode_share_link(quiz, pinterest, result), pinterest.prop("href", pinterest.prop("href") + "&media=" + img)), 
 				
-			$(e.selector).find(".waz_qc_share_link")
+			$(quiz.selector).find(".waz_qc_share_link")
 				.click(function(result) {
 					result.preventDefault();
 					var url = $(this).prop("href");
-					window.open(url, "_blank", "resizable=yes,scrollbars=yes,titlebar=yes, width=560, height=443, top=100, left=50"), add_activity(e.ajaxurl, e.nonce, e.quiz_id, "shares")
+					window.open(url, "_blank", "resizable=yes,scrollbars=yes,titlebar=yes, width=560, height=443, top=100, left=50"), add_activity(quiz.ajaxurl, quiz.nonce, quiz.quiz_id, "shares")
 				})
 		}
 
-		function encode_share_link(e, result) {
-			var s = encodeURIComponent(e.data("sharestring").replace("{{MY_QUIZ_RESULT}}", result)),
-				t = e.prop("href");
-			e.prop("href", t + s)
+		function encode_share_link(quiz, link, result) {
+			var sharestring = encodeURIComponent(quiz.sharestring.replace("{{MY_QUIZ_RESULT}}", result)),
+				href = link.prop("href");
+			link.prop("href", href + sharestring)
 		}
 		
 		function addQuizImg(e) {

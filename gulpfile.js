@@ -52,7 +52,7 @@ gulp.task('minify-image', function () {
 
 gulp.task('html-replace', function() {
   gulp.src('src/index.html')
-  .pipe(replace(/quiz\.css/g, 'quiz.min.css'))
+  .pipe(replace(/\.\.\/build\/css\/quiz\.min\.css/g, 'css/quiz.min.css'))
   .pipe(replace(/quiz\.js/g, 'quiz.min.js'))
   .pipe(replace(/images\//g, 'http://server.wazalo.com/WazaloQuizClient/images/')) 
   .pipe(htmlmin({
