@@ -1,5 +1,6 @@
 jQuery(document)
 	.ready(function($) {
+		
 		function detectIE() {
 			var uagent = window.navigator.userAgent,
 				msie = uagent.indexOf("MSIE ");
@@ -25,29 +26,37 @@ jQuery(document)
 				.each(function(index) {
 					// for each quiz section load the associated data and set the selector and default image
 					var thisId = get_quiz_id(this);
-					thisId && (quizzes[thisId] = eval("quizData_" + thisId), quizzes[thisId].selector = this, default_img = quizzes[thisId].default_img)
-				}), $.each(quizzes, function(e) {
-					$.each(quizzes[e].questions, function(i) {
-						// only care for questions that have answers that have values. Add (splice) each of the questions to the questions array
-						quizzes[e].questions[i].answers = quizzes[e].questions[i].answers.filter(function(e) {
-							return "" !== e.answer || "" !== e.img
-						}), quizzes[e].questions[i].hasOwnProperty("answers") && 0 !== quizzes[e].questions[i].answers.length || quizzes[e].questions.splice(i)
-					})
-				}), $.each(quizzes, function(e) {
+					thisId && ( 
+						quizzes[thisId] = eval("quizData_" + thisId), 
+						quizzes[thisId].selector = this, 
+						default_img = quizzes[thisId].default_img
+					);
+				}), $.each(quizzes, function(quiz_index) {
+						$.each(quizzes[quiz_index].questions, function(question_index) {
+							// only include questions that have answers that have values. 
+							// Add (splice) each of the questions to the questions array
+							quizzes[quiz_index].questions[question_index].answers = quizzes[quiz_index].questions[question_index].answers.filter(
+								function(answer_index) {
+									return "" !== answer_index.answer || "" !== answer_index.img
+								}
+							), 
+							quizzes[quiz_index].questions[question_index].hasOwnProperty("answers") && 0 !== quizzes[quiz_index].questions[question_index].answers.length || quizzes[quiz_index].questions.splice(question_index)
+						})
+				}), $.each(quizzes, function(quiz_index) {
 					// and shuffle if neccesary
-					"on" == quizzes[e].quiz_settings.shuffle_questions && (quizzes[e].questions = shuffleArray(quizzes[e].questions))
+					"on" == quizzes[quiz_index].quiz_settings.shuffle_questions && (quizzes[quiz_index].questions = shuffleArray(quizzes[quiz_index].questions))
 				})
 		}
 
 		function preloadImages() {
-			$.each(quizzes, function(e) {
-				quizzes[e].questions[0] && lazyLoadQuestion(quizzes[e].questions[0])
+			$.each(quizzes, function(quiz_index) {
+				quizzes[quiz_index].questions[0] && lazyLoadQuestion(quizzes[quiz_index].questions[0])
 			})
 		}
 
 		function lazyLoadResults(e) {
-			e.hasOwnProperty("quiz_results") && $.each(e.quiz_results, function(i) {
-				e.quiz_results[i].hasOwnProperty("img") && lazyLoadImage(e.quiz_results[i].img)
+			e.hasOwnProperty("quiz_results") && $.each(e.quiz_results, function(index) {
+				e.quiz_results[index].hasOwnProperty("img") && lazyLoadImage(e.quiz_results[index].img)
 			})
 		}
 
@@ -59,8 +68,8 @@ jQuery(document)
 		}
 
 		function lazyLoadQuestion(e) {
-			e.hasOwnProperty("img") && lazyLoadImage(e.img), e.hasOwnProperty("answers") && $.each(e.answers, function(i) {
-				e.answers[i].hasOwnProperty("img") && lazyLoadImage(e.answers[i].img)
+			e.hasOwnProperty("img") && lazyLoadImage(e.img), e.hasOwnProperty("answers") && $.each(e.answers, function(index) {
+				e.answers[index].hasOwnProperty("img") && lazyLoadImage(e.answers[index].img)
 			})
 		}
 
@@ -75,47 +84,52 @@ jQuery(document)
 				$(e.selector)
 					.find(".waz_qc_question_count")
 					.html(e.currentQuestion + 1 + "/" + e.questionCount);
-				var i = e.questions[e.currentQuestion].question;
+				
+				var quest = e.questions[e.currentQuestion].question;
 				$(e.selector)
 					.find("#waz_qc_question")
-					.html(i), $(e.selector)
+					.html(quest), $(e.selector)
 					.find("#waz_qc_question_back")
-					.html(i);
-				var s = e.questions[e.currentQuestion].img;
+					.html(quest);
+					
+				var quest_img = e.questions[e.currentQuestion].img;
 				$(e.selector)
 					.find("#waz_qc_answer_container")
 					.find(".waz_qc_quiz_question_img")
-					.attr("src", s), $(e.selector)
+					.attr("src", quest_img), $(e.selector)
 					.find("#waz_qc_back_container")
 					.find(".waz_qc_quiz_question_img")
-					.attr("src", s), $(e.selector)
+					.attr("src", quest_img), $(e.selector)
 					.find("#waz_qc_answer_container")
 					.data("id", e.questions[e.currentQuestion].id);
-				var t;
-				"mc" == e.quiz_settings.quiz_type && (t = e.questions[e.currentQuestion].answers[0]);
-				var n = shuffleArray(e.questions[e.currentQuestion].answers);
+				
+				var answer;
+				"mc" == e.quiz_settings.quiz_type && (answer = e.questions[e.currentQuestion].answers[0]);
+				
+				var shuffled_questions = shuffleArray(e.questions[e.currentQuestion].answers);
 				e.currentQuestion + 1 < e.questionCount ? lazyLoadQuestion(e.questions[e.currentQuestion + 1]) : lazyLoadResults(e), $(e.selector)
 					.find(".waz_qc_answer_div")
 					.hide();
 					
-				for (var c = 0; c < n.length; c++)("" !== n[c].img || "" !== n[c].answer) && ("mc" == e.quiz_settings.quiz_type && n[c].answer == t.answer && n[c].img == t.img && (e.currentAnswer = $(e.selector)
+				for (var c = 0; c < shuffled_questions.length; c++)
+					("" !== shuffled_questions[c].img || "" !== shuffled_questions[c].answer) && ("mc" == e.quiz_settings.quiz_type && shuffled_questions[c].answer == answer.answer && shuffled_questions[c].img == answer.img && (e.currentAnswer = $(e.selector)
 						.find(".waz_qc_answer_div")
 						.eq(c)
 						.attr("data-question")), "pt" == e.quiz_settings.quiz_type && $(e.selector)
 					.find(".waz_qc_answer_div")
 					.eq(c)
-					.data("results", n[c].results), $(e.selector)
+					.data("results", shuffled_questions[c].results), $(e.selector)
 					.find(".waz_qc_answer_div")
 					.eq(c)
 					.find(".waz_qc_quiz_answer_img")
-					.attr("src", n[c].img), $(e.selector)
+					.attr("src", shuffled_questions[c].img), $(e.selector)
 					.find(".waz_qc_answer_div")
 					.eq(c)
 					.find(".waz_qc_answer_span")
-					.html(svg_square + n[c].answer), $(e.selector)
+					.html(svg_square + shuffled_questions[c].answer), $(e.selector)
 					.find(".waz_qc_answer_div")
 					.eq(c)
-					.data("id", n[c].id), $(e.selector)
+					.data("id", shuffled_questions[c].id), $(e.selector)
 					.find(".waz_qc_answer_div")
 					.eq(c)
 					.show());
