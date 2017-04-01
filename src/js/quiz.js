@@ -504,10 +504,10 @@ jQuery(document).ready(function($) {
 	 * @param {?} nonce
 	 * @param {?} quizId
 	 * @param {string} question
-	 * @param {Object} response
+	 * @param {Object} answer
 	 * @return {undefined}
 	 */
-	function addResponse(ajaxurl, nonce, quizId, question, response) {
+	function addResponse(ajaxurl, nonce, quizId, question, answer) {
 		$.ajax({
 			url: ajaxurl,
 			type: "POST",
@@ -516,7 +516,7 @@ jQuery(document).ready(function($) {
 				nonce: nonce,
 				quiz_id: quizId,
 				question: question,
-				response: response
+				response: answer
 			}
 		}).done(function(ajaxurl) {
 			console.log(ajaxurl);
