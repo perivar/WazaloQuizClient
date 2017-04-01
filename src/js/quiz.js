@@ -608,10 +608,10 @@ jQuery(document).ready(function($) {
 			img = defaultImg;
 		}
 		var facebook = $(quiz.selector).find("#waz_qc_share_link_facebook");
-		//&link=&name=The+Ultimate+Quiz&caption=MasterTry+this+Quiz&description=
 		if (1 == facebook.length) {
-			encodeShareString(quiz, facebook, result);
-			facebook.prop("href", facebook.prop("href") + "&picture=" + img);
+			//encodeShareString(quiz, facebook, result);
+			//facebook.prop("href", facebook.prop("href") + "&picture=" + img);
+			facebook.prop("href", buildFacebookShareUrl(quiz, img, result));
 		}
 		var twitter = $(quiz.selector).find("#waz_qc_share_link_twitter");
 		if (1 == twitter.length) {
@@ -619,7 +619,8 @@ jQuery(document).ready(function($) {
 		}
 		var email = $(quiz.selector).find("#waz_qc_share_link_email");
 		if (1 == email.length) {
-			encodeShareString(quiz, email, result);
+			//encodeShareString(quiz, email, result);
+			email.prop("href", buildEmailShareUrl(quiz, result));
 		}
 		var whatsapp = $(quiz.selector).find("#waz_qc_share_link_whatsapp");
 		if (1 == whatsapp.length) {
@@ -648,6 +649,30 @@ jQuery(document).ready(function($) {
 		var encoded = encodeURIComponent(quiz.sharestring.replace("{{MY_QUIZ_RESULT}}", result));
 		var href = link.prop("href");
 		link.prop("href", href + encoded);
+	}
+
+	/**
+	 * Generate the facebook sharing url
+	 * @see https://developers.facebook.com/docs/sharing/reference/feed-dialog
+	 */
+	function buildFacebookShareUrl(quiz, img, result) {
+		// https://www.facebook.com/dialog/feed?app_id=177036859470519&amp;link=&amp;name=The+Ultimate+Star+Wars+Quiz&amp;caption=Padawan+or+Jedi+Master%3F+Try+this+Quiz.&amp;description=
+		var url = "https://www.facebook.com/dialog/feed?app_id=" + 
+			quiz.facebook_app_id + "&link=" + encodeURIComponent(quiz.shareurl) + 
+            "&name=" + encodeURIComponent(quiz.sharename) + 
+			"&caption=" + encodeURIComponent(quiz.sharecaption.replace("{{MY_QUIZ_RESULT}}", result)) + 
+			"&description=" + encodeURIComponent(quiz.sharestring.replace("{{MY_QUIZ_RESULT}}", result)) + 
+			"&picture=" + img;
+		return url;					
+	}
+
+	/**
+	 * Generate the email sharing url
+	 */
+	function buildEmailShareUrl(quiz, result) {
+		var url = "mailto:?body=" + encodeURIComponent(quiz.sharename + " " + quiz.shareurl) + 
+			"&subject=" + encodeURIComponent(quiz.sharestring.replace("{{MY_QUIZ_RESULT}}", result));
+		return url;					
 	}
 	
 	/**
