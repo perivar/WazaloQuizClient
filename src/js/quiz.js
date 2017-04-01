@@ -746,8 +746,6 @@ jQuery(document).ready(function($) {
 		var quiz = quizzes[getQuizId($(this).closest(".waz_qc_quiz"))];
 		scrollIntoView(quiz.selector);
 		$(this).blur();
-		//var idDiv = $(this).closest("#waz_qc_answer_container").data("id");
-		//var id = $(this).data("id");
 		var isCorrect = false;
 		if ($(this).attr("data-question") === quiz.currentAnswer) {
 			quiz.score = quiz.score + 1;
