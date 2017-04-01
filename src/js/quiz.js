@@ -260,36 +260,47 @@ jQuery(document).ready(function($) {
 
 	/**
 	 * @param {Object} quiz
-	 * @return {?}
+	 * @return the result string
 	 */
 	function setResult(quiz) {
 		var result = "undefined";
 		if ("pt" == quiz.quiz_settings.quiz_type) {
-			var score = -1;
-			var items = [];
+			// personality quizzes use the results array on the questions to determine a score
+			
+			var highestScore = -1;
+			var highestScoreItems = [];
+			
+			// determine the hightest score out of the results stored
 			$.each(quiz.quiz_results, function(quiz, result) {
 				if (result.hasOwnProperty("score")) {
-					if (result.score > score) {
-						score = result.score;
+					if (result.score > highestScore) {
+						highestScore = result.score;
 					}
 				}
 			});
+			
+			// and find those results that have the same score
 			$.each(quiz.quiz_results, function(quiz, result) {
 				if (result.hasOwnProperty("score")) {
-					if (result.score == score) {
-						items.push(result);
+					if (result.score == highestScore) {
+						highestScoreItems.push(result);
 					}
 				}
 			});
-			if (0 === items.length) {
-				items = quiz.quiz_results;
+			
+			// if not a single one of the answers have any scores, just use all
+			if (0 === highestScoreItems.length) {
+				highestScoreItems = quiz.quiz_results;
 			}
 			$(quiz.selector).find(".waz_qc_score_text").hide();
-			result = items[Math.floor(Math.random() * items.length)];
+			
+			// and pick one of them randomly
+			result = highestScoreItems[Math.floor(Math.random() * highestScoreItems.length)];
 		} else {
+			
+			// normal quizzes are using the max and min properties of the quiz results to determine the correct result
 			var k = 0;
-			for (;
-				"undefined" == result;) {
+			for (; "undefined" == result; ) {
 				if (quiz.quiz_results[k].min <= quiz.score && quiz.quiz_results[k].max >= quiz.score) {
 					result = quiz.quiz_results[k];
 				} else {
@@ -559,7 +570,7 @@ jQuery(document).ready(function($) {
 				$(this).hide();
 			}).show("fast");
 		}
-		if ("end" == quiz.hideAnswers) {
+		if ("end" == quiz.showAnswersAt) {
 			showResponses(quiz);
 		}
 		if ("on" == quiz.quiz_settings.show_sharing) {
@@ -720,7 +731,7 @@ jQuery(document).ready(function($) {
 		quiz.score = 0;
 		quiz.responses = [];
 		quiz.questionCount = quiz.questions.length;
-		quiz.hideAnswers = "" === quiz.quiz_settings.hide_answers ? "after" : "on" === quiz.quiz_settings.hide_answers ? "end" : quiz.quiz_settings.hide_answers;
+		quiz.showAnswersAt = "" === quiz.quiz_settings.hide_answers ? "after" : "on" === quiz.quiz_settings.hide_answers ? "end" : quiz.quiz_settings.hide_answers;
 		$(this).siblings(".waz_qc_quiz_title").hide();
 		$(this).siblings(".waz_qc_quiz_description").hide();
 		$(this).siblings(".waz_qc_quiz_description_img").hide();
@@ -758,16 +769,20 @@ jQuery(document).ready(function($) {
 			question: $(this).siblings("#waz_qc_question").html()
 		};
 		if (quiz.responses.push(response), addResponse(quiz.ajaxurl, quiz.nonce, quiz.quiz_id, response.question, response.answer), "pt" == quiz.quiz_settings.quiz_type) {
-			$.each($(this).data("results"), function(i, s) {
-				$.each(quiz.quiz_results, function(e, i) {
-					if (s == i.id) {
-						i.score = i.hasOwnProperty("score") ? i.score + 1 : 1;
+			// compare the question results array with the quiz results
+			$.each($(this).data("results"), function(answerResultKey, answerResultValue) {
+				$.each(quiz.quiz_results, function(index, quizResult) {
+					if (answerResultValue == quizResult.id) {
+						// store the score property if we have a match
+						quizResult.score = quizResult.hasOwnProperty("score") ? quizResult.score + 1 : 1;
+						return true; // continue if a match
 					}
 				});
 			});
 			showQuestion(quiz);
 		} else {
-			if ("after" == quiz.hideAnswers) {
+			if ("after" == quiz.showAnswersAt) {
+				// use the flip style to show the answer immediately after the user has answered
 				$(quiz.selector).find("#waz_qc_your_answer").html(addQuizImg($(this).children(".waz_qc_quiz_answer_img").attr("src")) + $(this).children(".waz_qc_answer_span").html().replace(svgSquare, ""));
 				var correctHtml = getCorrectAnswerHtml(quiz);
 				$(quiz.selector).find("#waz_qc_correct_answer").html(correctHtml);
@@ -790,6 +805,7 @@ jQuery(document).ready(function($) {
 				}
 				scaleFlipBoxBack(quiz.selector);
 			} else {
+				// wait until the end of the quiz to show the answers, only show the next question
 				showQuestion(quiz);
 			}
 		}
