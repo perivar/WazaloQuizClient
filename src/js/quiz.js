@@ -106,8 +106,8 @@ jQuery(document).ready(function($) {
 	 * @return the quiz id
 	 */
 	function getQuizId(quizDiv) {
-		var size = $(quizDiv).attr("id");
-		return size ? size.replace(/\D+/g, "") : false;
+		var id = $(quizDiv).attr("id");
+		return id ? id.replace(/\D+/g, "") : false;
 	}
 
 	/**
@@ -115,50 +115,51 @@ jQuery(document).ready(function($) {
 	 * quiz_type is either "pt" - personality test or "mc" - normal quiz
 	 */
 	function showQuestion(quiz) {
-		if (quiz.currentQuestion < quiz.questionCount) {
-			$(quiz.selector).find(".waz_qc_question_count").html(quiz.currentQuestion + 1 + "/" + quiz.questionCount);
-			var quest = quiz.questions[quiz.currentQuestion].question;
+		if (quiz.questionCurrentIndex < quiz.questionCount) {
+			$(quiz.selector).find(".waz_qc_question_count").html(quiz.questionCurrentIndex + 1 + "/" + quiz.questionCount);
+			var quest = quiz.questions[quiz.questionCurrentIndex].question;
 			$(quiz.selector).find("#waz_qc_question").html(quest);
 			$(quiz.selector).find("#waz_qc_question_back").html(quest);
-			var questImg = quiz.questions[quiz.currentQuestion].img;
+			var questImg = quiz.questions[quiz.questionCurrentIndex].img;
 			$(quiz.selector).find("#waz_qc_answer_container").find(".waz_qc_quiz_question_img").attr("src", questImg);
 			$(quiz.selector).find("#waz_qc_back_container").find(".waz_qc_quiz_question_img").attr("src", questImg);
-			$(quiz.selector).find("#waz_qc_answer_container").data("id", quiz.questions[quiz.currentQuestion].id);
-			var answer;
+			$(quiz.selector).find("#waz_qc_answer_container").data("id", quiz.questions[quiz.questionCurrentIndex].id);
+			
+			var curAnswer;
 			if ("mc" == quiz.quiz_settings.quiz_type) {
-				answer = quiz.questions[quiz.currentQuestion].answers[0];
+				curAnswer = quiz.questions[quiz.questionCurrentIndex].answers[0];
 			}
-			var shuffledQuestions = shuffleArray(quiz.questions[quiz.currentQuestion].answers);
-			if (quiz.currentQuestion + 1 < quiz.questionCount) {
-				lazyLoadQuestion(quiz.questions[quiz.currentQuestion + 1]);
+			var shuffledAnswers = shuffleArray(quiz.questions[quiz.questionCurrentIndex].answers);
+			if (quiz.questionCurrentIndex + 1 < quiz.questionCount) {
+				lazyLoadQuestion(quiz.questions[quiz.questionCurrentIndex + 1]);
 			} else {
 				lazyLoadResults(quiz);
 			}
 			$(quiz.selector).find(".waz_qc_answer_div").hide();
-			var questionIndex = 0;
-			for (; questionIndex < shuffledQuestions.length; questionIndex++) {
-				if ("" !== shuffledQuestions[questionIndex].img || "" !== shuffledQuestions[questionIndex].answer) {
+			var answerIndex = 0;
+			for (; answerIndex < shuffledAnswers.length; answerIndex++) {
+				if ("" !== shuffledAnswers[answerIndex].img || "" !== shuffledAnswers[answerIndex].answer) {
 					if ("mc" == quiz.quiz_settings.quiz_type) {
-						if (shuffledQuestions[questionIndex].answer == answer.answer) {
-							if (shuffledQuestions[questionIndex].img == answer.img) {
-								quiz.currentAnswer = $(quiz.selector).find(".waz_qc_answer_div").eq(questionIndex).attr("data-question");
+						if (shuffledAnswers[answerIndex].answer == curAnswer.answer) {
+							if (shuffledAnswers[answerIndex].img == curAnswer.img) {
+								quiz.currentAnswer = $(quiz.selector).find(".waz_qc_answer_div").eq(answerIndex).attr("data-question");
 							}
 						}
 					}
 					if ("pt" == quiz.quiz_settings.quiz_type) {
-						$(quiz.selector).find(".waz_qc_answer_div").eq(questionIndex).data("results", shuffledQuestions[questionIndex].results);
+						$(quiz.selector).find(".waz_qc_answer_div").eq(answerIndex).data("results", shuffledAnswers[answerIndex].results);
 					}
-					$(quiz.selector).find(".waz_qc_answer_div").eq(questionIndex).find(".waz_qc_quiz_answer_img").attr("src", shuffledQuestions[questionIndex].img);
-					$(quiz.selector).find(".waz_qc_answer_div").eq(questionIndex).find(".waz_qc_answer_span").html(svgSquare + shuffledQuestions[questionIndex].answer);
-					$(quiz.selector).find(".waz_qc_answer_div").eq(questionIndex).data("id", shuffledQuestions[questionIndex].id);
-					$(quiz.selector).find(".waz_qc_answer_div").eq(questionIndex).show();
+					$(quiz.selector).find(".waz_qc_answer_div").eq(answerIndex).find(".waz_qc_quiz_answer_img").attr("src", shuffledAnswers[answerIndex].img);
+					$(quiz.selector).find(".waz_qc_answer_div").eq(answerIndex).find(".waz_qc_answer_span").html(svgSquare + shuffledAnswers[answerIndex].answer);
+					$(quiz.selector).find(".waz_qc_answer_div").eq(answerIndex).data("id", shuffledAnswers[answerIndex].id);
+					$(quiz.selector).find(".waz_qc_answer_div").eq(answerIndex).show();
 				}
 			}
 			$(quiz.selector).find("#waz_qc_answer_container").waitForImages(function() {
 				maybeAddQuarterClass(quiz.selector);
 				scaleFlipBoxQuestion(quiz.selector);
 			});
-			quiz.currentQuestion = quiz.currentQuestion + 1;
+			quiz.questionCurrentIndex = quiz.questionCurrentIndex + 1;
 		} else {
 			endTest(quiz);
 		}
@@ -169,12 +170,13 @@ jQuery(document).ready(function($) {
 	 * @return the maximum outer height in the element set
 	 */
 	function maxHeightOfElementSet(elementSet) {
-		var x = 0;
-		return $.each(elementSet, function(element) {
-			if (elementSet.eq(element).outerHeight() > x) {
-				x = elementSet.eq(element).outerHeight();
+		var maxHeight = 0;
+		$.each(elementSet, function(element) {
+			if (elementSet.eq(element).outerHeight() > maxHeight) {
+				maxHeight = elementSet.eq(element).outerHeight();
 			}
-		}), x;
+		});
+		return maxHeight;
 	}
 	
 	/**
@@ -212,17 +214,17 @@ jQuery(document).ready(function($) {
 	 * @param {?} quizDiv
 	 */
 	function scaleFlipBoxBack(quizDiv) {
-		var maxHeight = 0;
+		var maxVisibleHeight = 0;
 		$(quizDiv).find("#waz_qc_back_container").children().each(function() {
 			if ($(this).is(":visible")) {
-				maxHeight += $(this).outerHeight(true);
+				maxVisibleHeight += $(this).outerHeight(true);
 			}
 		});
-		maxHeight += 35;
-		if (400 > maxHeight) {
-			maxHeight = 400;
+		maxVisibleHeight += 35;
+		if (400 > maxVisibleHeight) {
+			maxVisibleHeight = 400;
 		}
-		$(quizDiv).find(".waz_qc_quiz_div, #waz_qc_answer_container, #waz_qc_back_container").height(maxHeight);
+		$(quizDiv).find(".waz_qc_quiz_div, #waz_qc_answer_container, #waz_qc_back_container").height(maxVisibleHeight);
 	}
 	
 	/**
@@ -245,15 +247,15 @@ jQuery(document).ready(function($) {
 				}
 			}
 			$(quizDiv).find(".waz_qc_answer_div").addClass(className);
-			var height1 = maxHeightOfElementSet($(quizDiv).find(".waz_qc_quiz_answer_img:visible"));
-			if (height1 > 200) {
-				height1 = 200;
+			var heightAnswerImages = maxHeightOfElementSet($(quizDiv).find(".waz_qc_quiz_answer_img:visible"));
+			if (heightAnswerImages > 200) {
+				heightAnswerImages = 200;
 			}
 			$(quizDiv).find(".waz_qc_quiz_answer_img:visible").each(function() {
-				$(this).css("marginBottom", height1 - $(this).height() + 10 + "px");
+				$(this).css("marginBottom", heightAnswerImages - $(this).height() + 10 + "px");
 			});
-			var height2 = maxHeightOfElementSet($(quizDiv).find(".waz_qc_answer_div:visible"));
-			return $(quizDiv).find(".waz_qc_answer_div:visible").outerHeight(height2), true;
+			var heightAnswers = maxHeightOfElementSet($(quizDiv).find(".waz_qc_answer_div:visible"));
+			return $(quizDiv).find(".waz_qc_answer_div:visible").outerHeight(heightAnswers), true;
 		}
 		return false;
 	}
@@ -312,7 +314,7 @@ jQuery(document).ready(function($) {
 				}
 			}
 			var scoreStringFix = scoreString.replace("{{SCORE_CORRECT}}", quiz.score);
-			scoreString = scoreString.replace("{{SCORE_TOTAL}}", quiz.questionCount);
+			scoreStringFix = scoreStringFix.replace("{{SCORE_TOTAL}}", quiz.questionCount);
 			$(quiz.selector).find(".waz_qc_score_text").html(scoreStringFix);
 		}
 		return $(quiz.selector).find(".waz_qc_score_title").html(result.title), $(quiz.selector).find(".waz_qc_score_img").attr("src", result.img), $(quiz.selector).find(".waz_qc_score_desc").html(result.desc), result.hasOwnProperty("id") ? addResult(quiz.ajaxurl, quiz.nonce, quiz.quiz_id, result.id) : addResult(quiz.ajaxurl, quiz.nonce, quiz.quiz_id, quiz.score), "pt" == quiz.quiz_settings.quiz_type ? result.title : result.title ? quiz.score + "/" + quiz.questionCount + ": " + result.title : quiz.score + "/" + quiz.questionCount;
@@ -362,7 +364,7 @@ jQuery(document).ready(function($) {
 		$(quiz.selector).find(".waz_qc_optin_input").tooltipster({
 			trigger: "custom",
 			maxWidth: 240,
-			theme: ["tooltipster-borderless", "tooltipster-quiz-cat"]
+			theme: ["tooltipster-borderless", "tooltipster-quiz"]
 		}).tooltipster("close");
 		$(quiz.selector).find(".waz_qc_optin_container").show();
 		$(quiz.selector).find(".waz_qc_optin_input").first().focus();
@@ -752,7 +754,7 @@ jQuery(document).ready(function($) {
 		if (usingIE) {
 			ieFix(quiz.selector);
 		}
-		quiz.currentQuestion = 0;
+		quiz.questionCurrentIndex = 0;
 		quiz.score = 0;
 		quiz.responses = [];
 		quiz.questionCount = quiz.questions.length;
