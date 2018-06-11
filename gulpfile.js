@@ -54,7 +54,7 @@ gulp.task('html-replace', function() {
   gulp.src('src/index.html')
   .pipe(replace(/\.\.\/build\/css\/quiz\.min\.css/g, 'css/quiz.min.css'))
   .pipe(replace(/quiz\.js/g, 'quiz.min.js'))
-  .pipe(replace(/images\//g, 'http://wazalo-ams.wazalo.com/WazaloQuizClient/build/images/')) 
+  .pipe(replace(/images\//g, 'http://quiz.wazalo.com/images/')) 
   .pipe(htmlmin({
 	  collapseWhitespace: true, 
 	  minifyJS: true,
